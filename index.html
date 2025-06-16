@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CutsbyIMG - Coiffeur Professionnel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { primary: '#1a1a1a', secondary: '#e0a067' },
+          borderRadius: { 'none': '0px', 'sm': '4px', DEFAULT: '8px', 'md': '12px', 'lg': '16px', 'xl': '20px', '2xl': '24px', '3xl': '32px', 'full': '9999px', 'button': '8px' },
+          fontFamily: {
+            'anton': ['"Anton"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @media (max-width: 640px) {
+      .container {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+    }
+
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    :where([class^="ri-"])::before {
+      content: "\f3c2";
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      scroll-behavior: smooth;
+      width: 100%;
+      overflow-x: hidden !important;
+    }
+
+    html {
+      overflow-x: hidden !important;
+      width: 100%;
+      max-width: 100% !important;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    /* Fix pour les conteneurs qui pourraient dépasser */
+    .container {
+      max-width: 100%;
+    }
+
+    .video-container {
+      position: relative;
+      height: 100vh;
+      min-height: 480px;
+      overflow: hidden;
+    }
+
+    @media (max-width: 768px) {
+      .video-container {
+        height: 90vh;
+        min-height: 400px;
+      }
+    }
+
+    .video-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+
+    .video-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .service-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    .custom-checkbox {
+      display: inline-block;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .custom-checkbox input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .checkmark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 20px;
+      width: 20px;
+      background-color: #fff;
+      border: 2px solid #e0a067;
+      border-radius: 4px;
+    }
+
+    .custom-checkbox input:checked~.checkmark:after {
+      content: "";
+      position: absolute;
+      display: block;
+      left: 6px;
+      top: 2px;
+      width: 5px;
+      height: 10px;
+      border: solid #e0a067;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+
+    .testimonial-slider {
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+    }
+
+    .testimonial-slide {
+      scroll-snap-align: start;
+    }
+
+    h1,
+    h2,
+    h3,
+    .font-anton {
+      font-family: 'Anton', sans-serif;
+      letter-spacing: 0.5px;
+    }
+
+    /* Animations personnalisées */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes slideUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    
+    .animate-fadeIn {
+      animation: fadeIn 1s ease-out forwards;
+    }
+    
+    .animate-slideUp {
+      animation: slideUp 1.2s ease-out forwards;
+    }
+    
+    .animate-pulse-slow {
+      animation: pulse 3s infinite ease-in-out;
+    }
+    
+    /* Animation du texte du hero */
+    .hero-title {
+      opacity: 0;
+      animation: fadeIn 1.5s ease-out 0.5s forwards;
+    }
+    
+    .hero-text {
+      opacity: 0;
+      animation: slideUp 1.5s ease-out 1s forwards;
+    }
+    
+    .hero-button {
+      opacity: 0;
+      animation: fadeIn 1.5s ease-out 1.5s forwards, pulse 3s infinite ease-in-out 3s;
+    }
+    
+    /* Animation des services */
+    .service-card {
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+    }
+    
+    .service-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+    }
+    
+    .service-card:hover .card-highlight {
+      width: 100%;
+    }
+    
+    .card-highlight {
+      height: 3px;
+      width: 0;
+      background-color: #e0a067;
+      transition: width 0.4s ease-in-out;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+
+    /* Empêcher le défilement horizontal */
+    html, body {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+    
+    /* Assurez-vous que les éléments ne dépassent pas la largeur de l'écran */
+    img, video, iframe {
+      max-width: 100%;
+    }
+    
+    /* Fix spécifique pour les animations qui pourraient causer un débordement */
+    [data-aos] {
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body class="bg-white text-gray-900">
+  <!-- Header -->
+  <header class="fixed w-full z-50 bg-white bg-opacity-95 shadow-sm">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <a href="#" class="text-3xl font-anton text-primary hover:scale-105 transition-transform duration-300 tracking-wider uppercase">cutsbyimg</a>
+      <nav class="hidden md:flex space-x-8">
+        <a href="#about" class="text-gray-800 hover:text-secondary font-anton whitespace-nowrap relative overflow-hidden group">
+          À PROPOS
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-secondary transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="#services" class="text-gray-800 hover:text-secondary font-anton whitespace-nowrap relative overflow-hidden group">
+          SERVICES
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-secondary transition-all duration-300 group-hover:w-full"></span>
+        </a>
+      </nav>
+      <a href="#services"
+        class="bg-primary text-white px-6 py-2 !rounded-button font-anton hover:bg-opacity-90 transition duration-300 hover:scale-105 whitespace-nowrap">RÉSERVER</a>
+      <button class="md:hidden w-10 h-10 flex items-center justify-center" id="mobileMenuBtn">
+        <i class="ri-menu-line text-xl"></i>
+      </button>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white w-full py-4 shadow-md">
+      <div class="container mx-auto px-4 flex flex-col space-y-4">
+        <a href="#about" class="text-gray-800 hover:text-secondary font-anton">À PROPOS</a>
+        <a href="#services" class="text-gray-800 hover:text-secondary font-anton">SERVICES</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section with Video Background -->
+  <section class="video-container">
+    <div class="video-overlay"></div>
+    <video autoplay muted loop class="absolute object-cover w-full h-full">
+      <source
+        src="https://readdy.ai/api/search-image?query=professional%2520male%2520hairdresser%2520cutting%2520client%2520hair%2520in%2520modern%2520barbershop%252C%2520focus%2520on%2520hands%2520with%2520scissors%252C%2520stylish%2520interior%2520with%2520warm%2520lighting%252C%2520cinematic%2520quality%252C%2520shallow%2520depth%2520of%2520field&width=1920&height=1080&seq=1&orientation=landscape"
+        type="video/mp4">
+      Votre navigateur ne prend pas en charge la vidéo.
+    </video>
+    <div class="video-content h-full flex items-center">
+      <div class="container mx-auto px-4 pt-24">
+        <div class="max-w-2xl px-4">
+          <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-anton text-white mb-4 md:mb-6 hero-title">IMG</h1>
+          <p class="text-lg md:text-xl text-white mb-6 md:mb-8 hero-text">Révélez votre style unique avec des coupes
+            personnalisées par IMG</p>
+          <a href="#services"
+            class="bg-secondary text-white px-8 py-3 !rounded-button font-anton text-lg hover:bg-opacity-90 transition inline-block whitespace-nowrap hero-button">RÉSERVER MAINTENANT</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+        <div class="md:w-1/2" data-aos="fade-right" data-aos-duration="1000">
+          <img
+            src="https://readdy.ai/api/search-image?query=confident%2520professional%2520male%2520barber%2520in%2520stylish%2520clothes%252C%2520standing%2520with%2520arms%2520crossed%2520in%2520modern%2520barbershop%252C%2520warm%2520lighting%252C%2520high%2520end%2520portrait%252C%2520minimalist%2520background%252C%2520fashion%2520photography&width=600&height=800&seq=10&orientation=portrait"
+            alt="IMG Portrait" class="rounded-lg shadow-lg w-full max-w-sm md:max-w-md mx-auto hover:shadow-2xl transition-shadow duration-500">
+        </div>
+        <div class="md:w-1/2" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+          <h2 class="text-3xl md:text-4xl font-anton mb-6">À PROPOS DE IMG</h2>
+          <p class="text-lg text-gray-700 mb-6">Passionné par l'art de la coiffure depuis plus de 10 ans, je crée des
+            styles qui reflètent la personnalité unique de chaque client.</p>
+          <p class="text-lg text-gray-700 mb-8">Ma philosophie : une coupe parfaite doit être aussi belle que facile à
+            entretenir au quotidien.</p>
+          <div class="flex flex-wrap gap-6">
+            <a href="https://www.tiktok.com/" target="_blank" class="flex items-center group" data-aos="zoom-in" data-aos-delay="300">
+              <div class="w-12 h-12 flex items-center justify-center bg-secondary bg-opacity-10 rounded-full mr-4 group-hover:bg-secondary group-hover:bg-opacity-20 transition-all duration-300">
+                <i class="ri-tiktok-line text-secondary text-2xl"></i>
+              </div>
+              <div>
+                <h3 class="font-anton">TIKTOK</h3>
+                <p class="text-gray-600">Suivez nos tutoriels</p>
+              </div>
+            </a>
+            <a href="https://www.instagram.com/" target="_blank" class="flex items-center group" data-aos="zoom-in" data-aos-delay="500">
+              <div class="w-12 h-12 flex items-center justify-center bg-secondary bg-opacity-10 rounded-full mr-4 group-hover:bg-secondary group-hover:bg-opacity-20 transition-all duration-300">
+                <i class="ri-instagram-line text-secondary text-2xl"></i>
+              </div>
+              <div>
+                <h3 class="font-anton">INSTAGRAM</h3>
+                <p class="text-gray-600">Découvrez nos réalisations</p>
+              </div>
+            </a>
+            <a href="https://www.youtube.com/" target="_blank" class="flex items-center group mt-6 md:mt-4" data-aos="zoom-in" data-aos-delay="700">
+              <div class="w-12 h-12 flex items-center justify-center bg-secondary bg-opacity-10 rounded-full mr-4 group-hover:bg-secondary group-hover:bg-opacity-20 transition-all duration-300">
+                <i class="ri-youtube-line text-secondary text-2xl"></i>
+              </div>
+              <div>
+                <h3 class="font-anton">YOUTUBE</h3>
+                <p class="text-gray-600">Regardez nos vidéos</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-anton text-center mb-4" data-aos="fade-up">NOS SERVICES</h2>
+      <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200">Des prestations sur mesure pour tous les styles et
+        toutes les envies</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 md:gap-6 lg:gap-8">
+        <!-- Service Card 1 -->
+        <a href="reservation-moins-20-ans.html" class="service-card bg-white rounded-lg shadow-md overflow-hidden hover:cursor-pointer relative" data-aos="fade-up" data-aos-delay="300">
+          <div class="p-6">
+            <h3 class="text-xl font-anton mb-2">-20 ANS</h3>
+            <div class="flex justify-between items-center mb-4">
+              <span class="text-3xl font-anton text-secondary">20 CHF</span>
+              <span class="text-gray-500">35 min</span>
+            </div>
+            <p class="text-gray-600">Coupe tendance adaptée aux jeunes de moins de 20 ans avec conseils personnalisés.</p>
+            <div class="mt-4 text-center">
+              <span class="inline-block px-4 py-2 bg-secondary text-white rounded-button font-anton transition-transform hover:scale-105 duration-300">RÉSERVER</span>
+            </div>
+          </div>
+          <div class="card-highlight"></div>
+        </a>
+        <!-- Service Card 2 -->
+        <a href="reservation-moins-20-ans-barbe.html" class="service-card bg-white rounded-lg shadow-md overflow-hidden hover:cursor-pointer relative" data-aos="fade-up" data-aos-delay="400">
+          <div class="p-6">
+            <h3 class="text-xl font-anton mb-2">-20 ANS ET BARBE</h3>
+            <div class="flex justify-between items-center mb-4">
+              <span class="text-3xl font-anton text-secondary">25 CHF</span>
+              <span class="text-gray-500">50 min</span>
+            </div>
+            <p class="text-gray-600">Coupe complète avec taille de barbe pour les moins de 20 ans.</p>
+            <div class="mt-4 text-center">
+              <span class="inline-block px-4 py-2 bg-secondary text-white rounded-button font-anton transition-transform hover:scale-105 duration-300">RÉSERVER</span>
+            </div>
+          </div>
+          <div class="card-highlight"></div>
+        </a>
+        <!-- Service Card 3 -->
+        <a href="reservation-plus-20-ans.html" class="service-card bg-white rounded-lg shadow-md overflow-hidden hover:cursor-pointer relative" data-aos="fade-up" data-aos-delay="500">
+          <div class="p-6">
+            <h3 class="text-xl font-anton mb-2">+20 ANS</h3>
+            <div class="flex justify-between items-center mb-4">
+              <span class="text-3xl font-anton text-secondary">25 CHF</span>
+              <span class="text-gray-500">35 min</span>
+            </div>
+            <p class="text-gray-600">Coupe professionnelle pour adultes, adaptée à votre style et à la forme de votre visage.</p>
+            <div class="mt-4 text-center">
+              <span class="inline-block px-4 py-2 bg-secondary text-white rounded-button font-anton transition-transform hover:scale-105 duration-300">RÉSERVER</span>
+            </div>
+          </div>
+          <div class="card-highlight"></div>
+        </a>
+        <!-- Service Card 4 -->
+        <a href="reservation-plus-20-ans-barbe.html" class="service-card bg-white rounded-lg shadow-md overflow-hidden hover:cursor-pointer relative" data-aos="fade-up" data-aos-delay="600">
+          <div class="p-6">
+            <h3 class="text-xl font-anton mb-2">+20 ANS ET BARBE</h3>
+            <div class="flex justify-between items-center mb-4">
+              <span class="text-3xl font-anton text-secondary">30 CHF</span>
+              <span class="text-gray-500">50 min</span>
+            </div>
+            <p class="text-gray-600">Service complet incluant coupe de cheveux et taille de barbe avec finitions soignées.</p>
+            <div class="mt-4 text-center">
+              <span class="inline-block px-4 py-2 bg-secondary text-white rounded-button font-anton transition-transform hover:scale-105 duration-300">RÉSERVER</span>
+            </div>
+          </div>
+          <div class="card-highlight"></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-primary text-white py-10">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+        <div class="mb-6 md:mb-0" data-aos="fade-right" data-aos-offset="0">
+          <a href="#" class="text-2xl sm:text-3xl font-anton text-white mb-2 sm:mb-4 inline-block hover:scale-105 transition-transform duration-300 tracking-wider uppercase">cutsbyimg</a>
+          <p class="text-gray-300 text-sm sm:text-base">L'art de la coupe sur mesure</p>
+        </div>
+        <div class="flex space-x-6" data-aos="fade-left" data-aos-offset="0">
+          <a href="https://instagram.com" target="_blank" class="text-white hover:text-secondary transition-all duration-300 hover:scale-110">
+            <div class="w-10 h-10 flex items-center justify-center">
+              <i class="ri-instagram-line text-xl"></i>
+            </div>
+          </a>
+          <a href="https://www.tiktok.com" target="_blank" class="text-white hover:text-secondary transition-all duration-300 hover:scale-110">
+            <div class="w-10 h-10 flex items-center justify-center">
+              <i class="ri-tiktok-line text-xl"></i>
+            </div>
+          </a>
+          <a href="https://www.youtube.com" target="_blank" class="text-white hover:text-secondary transition-all duration-300 hover:scale-110">
+            <div class="w-10 h-10 flex items-center justify-center">
+              <i class="ri-youtube-line text-xl"></i>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <p class="text-sm text-gray-400 mb-4 md:mb-0">© 2025 CutsbyIMG. Tous droits réservés.</p>
+        <div class="flex space-x-6 text-sm text-gray-400">
+          <a href="#" class="hover:text-white transition-colors duration-300">Mentions légales</a>
+          <a href="#" class="hover:text-white transition-colors duration-300">Politique de confidentialité</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script id="mobileMenuScript">
+    document.addEventListener('DOMContentLoaded', function () {
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      mobileMenuBtn.addEventListener('click', function () {
+        mobileMenu.classList.toggle('hidden');
+      });
+      // Close mobile menu when clicking on a link
+      const mobileLinks = mobileMenu.querySelectorAll('a');
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', function () {
+          mobileMenu.classList.add('hidden');
+        });
+      });
+    });
+  </script>
+  <script id="smoothScrollScript">
+    document.addEventListener('DOMContentLoaded', function () {
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 80, // Adjust for header height
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    });
+  </script>
+  <script>
+    // Initialisation des animations AOS
+    document.addEventListener('DOMContentLoaded', function() {
+      AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: false,
+        mirror: true
+      });
+    });
+  </script>
+</body>
+
+</html>
