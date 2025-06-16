@@ -251,6 +251,80 @@
     [data-aos] {
       overflow: hidden;
     }
+
+    /* Styles pour le menu burger amélioré */
+    .burger-btn {
+      cursor: pointer;
+      z-index: 51;
+      position: relative;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .burger-line {
+      width: 24px;
+      height: 2px;
+      background-color: #1a1a1a;
+      display: block;
+      position: absolute;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .burger-line:nth-child(1) {
+      transform: translateY(-6px);
+    }
+
+    .burger-line:nth-child(3) {
+      transform: translateY(6px);
+    }
+
+    /* Animation précise pour former un X */
+    .burger-btn.active .burger-line:nth-child(1) {
+      transform: rotate(45deg);
+    }
+
+    .burger-btn.active .burger-line:nth-child(2) {
+      opacity: 0;
+      width: 0;
+    }
+
+    .burger-btn.active .burger-line:nth-child(3) {
+      transform: rotate(-45deg);
+    }
+
+    /* Animation des liens du menu mobile */
+    .mobile-menu-link {
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+    }
+    
+    #mobileMenu.open .mobile-menu-link:nth-child(1) {
+      animation: slideDown 0.4s forwards 0.1s;
+    }
+    
+    #mobileMenu.open .mobile-menu-link:nth-child(2) {
+      animation: slideDown 0.4s forwards 0.2s;
+    }
+    
+    @keyframes slideDown {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Style pour le lien de navigation actif */
+    .nav-link.active {
+      color: #e0a067;
+    }
+    
+    .nav-link.active .indicator {
+      width: 100%;
+    }
   </style>
 </head>
 
@@ -260,26 +334,28 @@
     <div class="container mx-auto px-4 py-3 flex justify-between items-center">
       <a href="#" class="text-3xl font-anton text-primary hover:scale-105 transition-transform duration-300 tracking-wider uppercase">cutsbyimg</a>
       <nav class="hidden md:flex space-x-8">
-        <a href="#about" class="text-gray-800 hover:text-secondary font-anton whitespace-nowrap relative overflow-hidden group">
+        <a href="#about" class="nav-link text-gray-800 hover:text-secondary font-anton whitespace-nowrap relative overflow-hidden group">
           À PROPOS
-          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-secondary transition-all duration-300 group-hover:w-full"></span>
+          <span class="indicator absolute bottom-0 left-0 w-0 h-0.5 bg-secondary transition-all duration-300 group-hover:w-full"></span>
         </a>
-        <a href="#services" class="text-gray-800 hover:text-secondary font-anton whitespace-nowrap relative overflow-hidden group">
+        <a href="#services" class="nav-link text-gray-800 hover:text-secondary font-anton whitespace-nowrap relative overflow-hidden group">
           SERVICES
-          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-secondary transition-all duration-300 group-hover:w-full"></span>
+          <span class="indicator absolute bottom-0 left-0 w-0 h-0.5 bg-secondary transition-all duration-300 group-hover:w-full"></span>
         </a>
       </nav>
       <a href="#services"
         class="bg-primary text-white px-6 py-2 !rounded-button font-anton hover:bg-opacity-90 transition duration-300 hover:scale-105 whitespace-nowrap">RÉSERVER</a>
-      <button class="md:hidden w-10 h-10 flex items-center justify-center" id="mobileMenuBtn">
-        <i class="ri-menu-line text-xl"></i>
+      <button class="md:hidden burger-btn w-10 h-10 flex flex-col justify-center items-center" id="mobileMenuBtn" aria-label="Menu">
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
       </button>
     </div>
     <!-- Mobile Menu -->
-    <div id="mobileMenu" class="hidden md:hidden bg-white w-full py-4 shadow-md">
+    <div id="mobileMenu" class="hidden md:hidden bg-white w-full py-4 absolute top-full left-0 shadow-md">
       <div class="container mx-auto px-4 flex flex-col space-y-4">
-        <a href="#about" class="text-gray-800 hover:text-secondary font-anton">À PROPOS</a>
-        <a href="#services" class="text-gray-800 hover:text-secondary font-anton">SERVICES</a>
+        <a href="#about" class="mobile-menu-link text-gray-800 hover:text-secondary font-anton text-lg py-2 transition-colors">À PROPOS</a>
+        <a href="#services" class="mobile-menu-link text-gray-800 hover:text-secondary font-anton text-lg py-2 transition-colors">SERVICES</a>
       </div>
     </div>
   </header>
@@ -468,18 +544,33 @@
     document.addEventListener('DOMContentLoaded', function () {
       const mobileMenuBtn = document.getElementById('mobileMenuBtn');
       const mobileMenu = document.getElementById('mobileMenu');
+      
       mobileMenuBtn.addEventListener('click', function () {
+        mobileMenuBtn.classList.toggle('active');
         mobileMenu.classList.toggle('hidden');
+        
+        // Ajouter la classe open pour les animations
+        if (!mobileMenu.classList.contains('hidden')) {
+          setTimeout(() => {
+            mobileMenu.classList.add('open');
+          }, 10);
+        } else {
+          mobileMenu.classList.remove('open');
+        }
       });
-      // Close mobile menu when clicking on a link
+      
+      // Fermeture du menu mobile au clic sur un lien
       const mobileLinks = mobileMenu.querySelectorAll('a');
       mobileLinks.forEach(link => {
         link.addEventListener('click', function () {
+          mobileMenu.classList.remove('open');
           mobileMenu.classList.add('hidden');
+          mobileMenuBtn.classList.remove('active');
         });
       });
     });
   </script>
+
   <script id="smoothScrollScript">
     document.addEventListener('DOMContentLoaded', function () {
       // Smooth scrolling for anchor links
@@ -507,6 +598,43 @@
         once: false,
         mirror: true
       });
+    });
+  </script>
+  <script>
+    // Modification du script pour suivre la section active
+    document.addEventListener('DOMContentLoaded', function() {
+      // Fonction pour mettre à jour la navigation active au défilement
+      function updateActiveNavOnScroll() {
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        const scrollPosition = window.scrollY + 300; // On ajoute un offset pour avoir une meilleure détection
+        
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.offsetHeight;
+          const sectionId = section.getAttribute('id');
+          
+          if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+            // Désactiver tous les liens
+            navLinks.forEach(link => {
+              link.classList.remove('active');
+            });
+            
+            // Activer le lien correspondant à la section
+            const activeLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
+            if (activeLink) {
+              activeLink.classList.add('active');
+            }
+          }
+        });
+      }
+      
+      // Écouter l'événement de défilement
+      window.addEventListener('scroll', updateActiveNavOnScroll);
+      
+      // Appel initial pour définir l'état au chargement
+      updateActiveNavOnScroll();
     });
   </script>
 </body>
