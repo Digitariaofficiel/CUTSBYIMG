@@ -196,20 +196,35 @@
       animation: pulse 3s infinite ease-in-out;
     }
     
-    /* Animation du texte du hero */
+    /* Animation du texte du hero - Modification du timing */
     .hero-title {
       opacity: 0;
-      animation: fadeIn 1.5s ease-out 0.5s forwards;
-    }
-    
-    .hero-text {
-      opacity: 0;
-      animation: slideUp 1.5s ease-out 1s forwards;
+      animation: fadeIn 1.2s ease-out 0.3s forwards;
+      font-size: 4rem; /* Taille de base augmentée */
     }
     
     .hero-button {
       opacity: 0;
-      animation: fadeIn 1.5s ease-out 1.5s forwards, pulse 3s infinite ease-in-out 3s;
+      animation: fadeIn 1.2s ease-out 0.8s forwards, pulse 3s infinite ease-in-out 2s;
+    }
+    
+    /* Responsive pour le titre héro plus grand */
+    @media (min-width: 768px) {
+      .hero-title {
+        font-size: 6rem;
+      }
+    }
+    
+    @media (min-width: 1024px) {
+      .hero-title {
+        font-size: 8rem;
+      }
+    }
+    
+    @media (max-width: 640px) {
+      .hero-title {
+        font-size: 3.5rem;
+      }
     }
     
     /* Animation des services */
@@ -270,7 +285,7 @@
       background-color: #1a1a1a;
       display: block;
       position: absolute;
-      transition: all 0.3s ease-in-out;
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .burger-line:nth-child(1) {
@@ -325,6 +340,130 @@
     .nav-link.active .indicator {
       width: 100%;
     }
+
+    /* Nouveau système pour les réseaux sociaux dans À propos */
+    /* Améliorations des animations pour les badges sociaux */
+    .social-badge {
+      display: flex;
+      align-items: center;
+      background-color: white;
+      border-radius: 50px;
+      padding: 8px;
+      box-shadow: 0 4px 20px rgba(224, 160, 103, 0.08);
+      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      margin-bottom: 12px;
+      overflow: hidden;
+      max-width: 52px;
+      cursor: pointer;
+      will-change: transform, max-width, box-shadow;
+      border: 1px solid rgba(224, 160, 103, 0.15);
+    }
+    
+    .social-badge:hover, .social-badge:focus {
+      max-width: 220px;
+      padding-right: 24px;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(224, 160, 103, 0.12);
+      background-color: #fafafa;
+    }
+    
+    .social-badge .icon-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background-color: #e0a067; /* Couleur secondaire du site */
+      margin-right: 20px; /* Espacement augmenté entre l'icône et le texte */
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(224, 160, 103, 0.2);
+    }
+    
+    .social-badge .icon-container i {
+      color: white;
+      font-size: 16px;
+    }
+    
+    .social-badge .badge-content {
+      white-space: nowrap;
+      opacity: 0;
+      transform: translateX(-20px);
+      transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
+      will-change: opacity, transform;
+      min-width: 100px; /* Assure une largeur minimale pour le contenu */
+    }
+    
+    .social-badge:hover .badge-content, .social-badge:focus .badge-content {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    
+    .social-badge .badge-title {
+      font-family: 'Anton', sans-serif;
+      letter-spacing: 0.5px;
+      font-size: 14px;
+      margin: 0 0 2px 0;
+      color: #1a1a1a; /* Couleur primaire du site */
+    }
+    
+    .social-badge .badge-subtitle {
+      font-size: 12px;
+      color: #e0a067; /* Couleur secondaire du site */
+      margin: 0;
+      line-height: 1.2;
+      font-weight: 500;
+    }
+
+    .social-badges-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-top: 24px;
+    }
+    
+    @media (min-width: 768px) {
+      .social-badges-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 16px; /* Augmenter l'espace entre les badges */
+      }
+      
+      .social-badge {
+        margin-bottom: 0;
+      }
+    }
+
+    /* Adaptation des badges sociaux pour le format mobile */
+    @media (max-width: 767px) {
+      .social-badge {
+        max-width: 100%;
+        padding-right: 16px;
+        margin-bottom: 10px;
+        transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      
+      .social-badge .badge-content {
+        opacity: 1;
+        transform: translateX(0);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      
+      .social-badge:hover, .social-badge:focus, .social-badge:active {
+        transform: translateY(-2px);
+      }
+      
+      .social-badge .icon-container {
+        margin-right: 14px;
+      }
+      
+      .social-badges-container {
+        flex-direction: column;
+        width: 100%;
+      }
+    }
   </style>
 </head>
 
@@ -334,12 +473,13 @@
     <div class="container mx-auto px-4 py-3 flex justify-between items-center">
       <a href="#" class="text-3xl font-anton text-primary hover:scale-105 transition-transform duration-300 tracking-wider uppercase">cutsbyimg</a>
       <nav class="hidden md:flex space-x-8">
-        <a href="#about" class="nav-link text-gray-800 hover:text-secondary font-anton whitespace-nowrap relative overflow-hidden group">
-          À PROPOS
-          <span class="indicator absolute bottom-0 left-0 w-0 h-0.5 bg-secondary transition-all duration-300 group-hover:w-full"></span>
-        </a>
+        
         <a href="#services" class="nav-link text-gray-800 hover:text-secondary font-anton whitespace-nowrap relative overflow-hidden group">
           SERVICES
+          <span class="indicator absolute bottom-0 left-0 w-0 h-0.5 bg-secondary transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="#about" class="nav-link text-gray-800 hover:text-secondary font-anton whitespace-nowrap relative overflow-hidden group">
+          À PROPOS
           <span class="indicator absolute bottom-0 left-0 w-0 h-0.5 bg-secondary transition-all duration-300 group-hover:w-full"></span>
         </a>
       </nav>
@@ -372,64 +512,15 @@
     <div class="video-content h-full flex items-center">
       <div class="container mx-auto px-4 pt-24">
         <div class="max-w-2xl px-4">
-          <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-anton text-white mb-4 md:mb-6 hero-title">IMG</h1>
-          <p class="text-lg md:text-xl text-white mb-6 md:mb-8 hero-text">Révélez votre style unique avec des coupes
-            personnalisées par IMG</p>
+          <h1 class="font-anton text-white mb-8 md:mb-10 hero-title">IMG</h1>
           <a href="#services"
-            class="bg-secondary text-white px-8 py-3 !rounded-button font-anton text-lg hover:bg-opacity-90 transition inline-block whitespace-nowrap hero-button">RÉSERVER MAINTENANT</a>
+             class="bg-secondary text-white px-8 py-3 !rounded-button font-anton text-lg hover:bg-opacity-90 transition inline-block whitespace-nowrap hero-button">RÉSERVER MAINTENANT</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- About Section -->
-  <section id="about" class="py-20 bg-gray-50">
-    <div class="container mx-auto px-4">
-      <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
-        <div class="md:w-1/2" data-aos="fade-right" data-aos-duration="1000">
-          <img
-            src="https://readdy.ai/api/search-image?query=confident%2520professional%2520male%2520barber%2520in%2520stylish%2520clothes%252C%2520standing%2520with%2520arms%2520crossed%2520in%2520modern%2520barbershop%252C%2520warm%2520lighting%252C%2520high%2520end%2520portrait%252C%2520minimalist%2520background%252C%2520fashion%2520photography&width=600&height=800&seq=10&orientation=portrait"
-            alt="IMG Portrait" class="rounded-lg shadow-lg w-full max-w-sm md:max-w-md mx-auto hover:shadow-2xl transition-shadow duration-500">
-        </div>
-        <div class="md:w-1/2" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
-          <h2 class="text-3xl md:text-4xl font-anton mb-6">À PROPOS DE IMG</h2>
-          <p class="text-lg text-gray-700 mb-6">Passionné par l'art de la coiffure depuis plus de 10 ans, je crée des
-            styles qui reflètent la personnalité unique de chaque client.</p>
-          <p class="text-lg text-gray-700 mb-8">Ma philosophie : une coupe parfaite doit être aussi belle que facile à
-            entretenir au quotidien.</p>
-          <div class="flex flex-wrap gap-6">
-            <a href="https://www.tiktok.com/" target="_blank" class="flex items-center group" data-aos="zoom-in" data-aos-delay="300">
-              <div class="w-12 h-12 flex items-center justify-center bg-secondary bg-opacity-10 rounded-full mr-4 group-hover:bg-secondary group-hover:bg-opacity-20 transition-all duration-300">
-                <i class="ri-tiktok-line text-secondary text-2xl"></i>
-              </div>
-              <div>
-                <h3 class="font-anton">TIKTOK</h3>
-                <p class="text-gray-600">Suivez nos tutoriels</p>
-              </div>
-            </a>
-            <a href="https://www.instagram.com/" target="_blank" class="flex items-center group" data-aos="zoom-in" data-aos-delay="500">
-              <div class="w-12 h-12 flex items-center justify-center bg-secondary bg-opacity-10 rounded-full mr-4 group-hover:bg-secondary group-hover:bg-opacity-20 transition-all duration-300">
-                <i class="ri-instagram-line text-secondary text-2xl"></i>
-              </div>
-              <div>
-                <h3 class="font-anton">INSTAGRAM</h3>
-                <p class="text-gray-600">Découvrez nos réalisations</p>
-              </div>
-            </a>
-            <a href="https://www.youtube.com/" target="_blank" class="flex items-center group mt-6 md:mt-4" data-aos="zoom-in" data-aos-delay="700">
-              <div class="w-12 h-12 flex items-center justify-center bg-secondary bg-opacity-10 rounded-full mr-4 group-hover:bg-secondary group-hover:bg-opacity-20 transition-all duration-300">
-                <i class="ri-youtube-line text-secondary text-2xl"></i>
-              </div>
-              <div>
-                <h3 class="font-anton">YOUTUBE</h3>
-                <p class="text-gray-600">Regardez nos vidéos</p>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  
 
   <!-- Services Section -->
   <section id="services" class="py-20 bg-gray-50">
@@ -446,7 +537,6 @@
               <span class="text-3xl font-anton text-secondary">20 CHF</span>
               <span class="text-gray-500">35 min</span>
             </div>
-            <p class="text-gray-600">Coupe tendance adaptée aux jeunes de moins de 20 ans avec conseils personnalisés.</p>
             <div class="mt-4 text-center">
               <span class="inline-block px-4 py-2 bg-secondary text-white rounded-button font-anton transition-transform hover:scale-105 duration-300">RÉSERVER</span>
             </div>
@@ -461,7 +551,6 @@
               <span class="text-3xl font-anton text-secondary">25 CHF</span>
               <span class="text-gray-500">50 min</span>
             </div>
-            <p class="text-gray-600">Coupe complète avec taille de barbe pour les moins de 20 ans.</p>
             <div class="mt-4 text-center">
               <span class="inline-block px-4 py-2 bg-secondary text-white rounded-button font-anton transition-transform hover:scale-105 duration-300">RÉSERVER</span>
             </div>
@@ -476,7 +565,6 @@
               <span class="text-3xl font-anton text-secondary">25 CHF</span>
               <span class="text-gray-500">35 min</span>
             </div>
-            <p class="text-gray-600">Coupe professionnelle pour adultes, adaptée à votre style et à la forme de votre visage.</p>
             <div class="mt-4 text-center">
               <span class="inline-block px-4 py-2 bg-secondary text-white rounded-button font-anton transition-transform hover:scale-105 duration-300">RÉSERVER</span>
             </div>
@@ -491,13 +579,63 @@
               <span class="text-3xl font-anton text-secondary">30 CHF</span>
               <span class="text-gray-500">50 min</span>
             </div>
-            <p class="text-gray-600">Service complet incluant coupe de cheveux et taille de barbe avec finitions soignées.</p>
             <div class="mt-4 text-center">
               <span class="inline-block px-4 py-2 bg-secondary text-white rounded-button font-anton transition-transform hover:scale-105 duration-300">RÉSERVER</span>
             </div>
           </div>
           <div class="card-highlight"></div>
         </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+        <div class="md:w-1/2" data-aos="fade-right" data-aos-duration="1000">
+          <img
+            src="https://readdy.ai/api/search-image?query=confident%2520professional%2520male%2520barber%2520in%2520stylish%2520clothes%252C%2520standing%2520with%2520arms%2520crossed%2520in%2520modern%2520barbershop%252C%2520warm%2520lighting%252C%2520high%2520end%2520portrait%252C%2520minimalist%2520background%252C%2520fashion%2520photography&width=600&height=800&seq=10&orientation=portrait"
+            alt="IMG Portrait" class="rounded-lg shadow-lg w-full max-w-sm md:max-w-md mx-auto hover:shadow-2xl transition-shadow duration-500">
+        </div>
+        <div class="md:w-1/2" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+          <h2 class="text-3xl md:text-4xl font-anton mb-6">À PROPOS DE MOI</h2>
+          <p class="text-lg text-gray-700 mb-6">Passionné par l'art de la coiffure depuis plus de 10 ans, je crée des
+            styles qui reflètent la personnalité unique de chaque client.</p>
+          <p class="text-lg text-gray-700 mb-8">Ma philosophie : une coupe parfaite doit être aussi belle à
+            entretenir au quotidien.</p>
+            
+          <h3 class="font-anton text-lg mb-6 text-gray-800">MES RÉSEAUX</h3>
+          <div class="social-badges-container" data-aos="fade-up" data-aos-delay="300">
+            <a href="https://www.tiktok.com/" target="_blank" class="social-badge">
+              <div class="icon-container">
+                <i class="ri-tiktok-line"></i>
+              </div>
+              <div class="badge-content">
+                <p class="badge-title">TIKTOK</p>
+                <p class="badge-subtitle">@cutsbyimg</p>
+              </div>
+            </a>
+            <a href="https://www.instagram.com/" target="_blank" class="social-badge">
+              <div class="icon-container">
+                <i class="ri-instagram-line"></i>
+              </div>
+              <div class="badge-content">
+                <p class="badge-title">INSTAGRAM</p>
+                <p class="badge-subtitle">@cutsbyimg</p>
+              </div>
+            </a>
+            <a href="https://www.youtube.com/" target="_blank" class="social-badge">
+              <div class="icon-container">
+                <i class="ri-youtube-line"></i>
+              </div>
+              <div class="badge-content">
+                <p class="badge-title">YOUTUBE</p>
+                <p class="badge-subtitle">@cutsbyimg</p>
+              </div>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -593,10 +731,11 @@
     // Initialisation des animations AOS
     document.addEventListener('DOMContentLoaded', function() {
       AOS.init({
-        duration: 800,
-        easing: 'ease-in-out',
+        duration: 1000,
+        easing: 'cubic-bezier(0.16, 1, 0.3, 1)', // Courbe d'accélération plus linéaire
         once: false,
-        mirror: true
+        mirror: false, // Désactiver mirror pour éviter les effets de rebond
+        anchorPlacement: 'top-bottom'
       });
     });
   </script>
