@@ -14,11 +14,18 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+  <link rel="stylesheet" href="styles.css">
   <script>
     tailwind.config = {
       theme: {
         extend: {
-          colors: { primary: '#1a1a1a', secondary: '#e0a067' },
+          colors: { 
+            primary: '#1F1F1F', 
+            secondary: '#0D47A1', /* Bleu plus foncé qui remplace #1565C0 */
+            dark: '#808080', /* Légèrement plus foncé que l'original #919191 */
+            medium: '#808080',
+            accent: '#FDF4E3' 
+          },
           borderRadius: { 'none': '0px', 'sm': '4px', DEFAULT: '8px', 'md': '12px', 'lg': '16px', 'xl': '20px', '2xl': '24px', '3xl': '32px', 'full': '9999px', 'button': '8px' },
           fontFamily: {
             'anton': ['"Anton"', 'sans-serif'],
@@ -27,464 +34,25 @@
       }
     }
   </script>
-  <style>
-    @media (max-width: 640px) {
-      .container {
-        padding-left: 16px;
-        padding-right: 16px;
-      }
-    }
-
-    .hide-scrollbar::-webkit-scrollbar {
-      display: none;
-    }
-
-    .hide-scrollbar {
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-    }
-
-    :where([class^="ri-"])::before {
-      content: "\f3c2";
-    }
-
-    body {
-      font-family: 'Montserrat', sans-serif;
-      scroll-behavior: smooth;
-      width: 100%;
-      overflow-x: hidden !important;
-    }
-
-    html {
-      overflow-x: hidden !important;
-      width: 100%;
-      max-width: 100% !important;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    /* Fix pour les conteneurs qui pourraient dépasser */
-    .container {
-      max-width: 100%;
-    }
-
-    .video-container {
-      position: relative;
-      height: 100vh;
-      min-height: 480px;
-      overflow: hidden;
-    }
-
-    @media (max-width: 768px) {
-      .video-container {
-        height: 90vh;
-        min-height: 400px;
-      }
-    }
-
-    .video-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 1;
-    }
-
-    .video-content {
-      position: relative;
-      z-index: 2;
-    }
-
-    .service-card {
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .service-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    }
-
-    input[type="number"]::-webkit-inner-spin-button,
-    input[type="number"]::-webkit-outer-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
-
-    .custom-checkbox {
-      display: inline-block;
-      position: relative;
-      cursor: pointer;
-    }
-
-    .custom-checkbox input {
-      position: absolute;
-      opacity: 0;
-      cursor: pointer;
-    }
-
-    .checkmark {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 20px;
-      width: 20px;
-      background-color: #fff;
-      border: 2px solid #e0a067;
-      border-radius: 4px;
-    }
-
-    .custom-checkbox input:checked~.checkmark:after {
-      content: "";
-      position: absolute;
-      display: block;
-      left: 6px;
-      top: 2px;
-      width: 5px;
-      height: 10px;
-      border: solid #e0a067;
-      border-width: 0 2px 2px 0;
-      transform: rotate(45deg);
-    }
-
-    .testimonial-slider {
-      scroll-snap-type: x mandatory;
-      scroll-behavior: smooth;
-    }
-
-    .testimonial-slide {
-      scroll-snap-align: start;
-    }
-
-    h1,
-    h2,
-    h3,
-    .font-anton {
-      font-family: 'Anton', sans-serif;
-      letter-spacing: 0.5px;
-    }
-
-    /* Animations personnalisées */
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    
-    @keyframes slideUp {
-      from { transform: translateY(30px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-    
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
-    }
-    
-    .animate-fadeIn {
-      animation: fadeIn 1s ease-out forwards;
-    }
-    
-    .animate-slideUp {
-      animation: slideUp 1.2s ease-out forwards;
-    }
-    
-    .animate-pulse-slow {
-      animation: pulse 3s infinite ease-in-out;
-    }
-    
-    /* Animation du texte du hero - Modification du timing */
-    .hero-title {
-      opacity: 0;
-      animation: fadeIn 1.2s ease-out 0.3s forwards;
-      font-size: 4rem; /* Taille de base augmentée */
-    }
-    
-    .hero-button {
-      opacity: 0;
-      animation: fadeIn 1.2s ease-out 0.8s forwards, pulse 3s infinite ease-in-out 2s;
-    }
-    
-    /* Responsive pour le titre héro plus grand */
-    @media (min-width: 768px) {
-      .hero-title {
-        font-size: 6rem;
-      }
-    }
-    
-    @media (min-width: 1024px) {
-      .hero-title {
-        font-size: 8rem;
-      }
-    }
-    
-    @media (max-width: 640px) {
-      .hero-title {
-        font-size: 3.5rem;
-      }
-    }
-    
-    /* Animation des services */
-    .service-card {
-      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
-    }
-    
-    .service-card:hover {
-      transform: translateY(-10px) scale(1.02);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
-    }
-    
-    .service-card:hover .card-highlight {
-      width: 100%;
-    }
-    
-    .card-highlight {
-      height: 3px;
-      width: 0;
-      background-color: #e0a067;
-      transition: width 0.4s ease-in-out;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-    }
-
-    /* Empêcher le défilement horizontal */
-    html, body {
-      max-width: 100%;
-      overflow-x: hidden;
-    }
-    
-    /* Assurez-vous que les éléments ne dépassent pas la largeur de l'écran */
-    img, video, iframe {
-      max-width: 100%;
-    }
-    
-    /* Fix spécifique pour les animations qui pourraient causer un débordement */
-    [data-aos] {
-      overflow: hidden;
-    }
-
-    /* Styles pour le menu burger amélioré */
-    .burger-btn {
-      cursor: pointer;
-      z-index: 51;
-      position: relative;
-      width: 40px;
-      height: 40px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .burger-line {
-      width: 24px;
-      height: 2px;
-      background-color: #1a1a1a;
-      display: block;
-      position: absolute;
-      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .burger-line:nth-child(1) {
-      transform: translateY(-6px);
-    }
-
-    .burger-line:nth-child(3) {
-      transform: translateY(6px);
-    }
-
-    /* Animation précise pour former un X */
-    .burger-btn.active .burger-line:nth-child(1) {
-      transform: rotate(45deg);
-    }
-
-    .burger-btn.active .burger-line:nth-child(2) {
-      opacity: 0;
-      width: 0;
-    }
-
-    .burger-btn.active .burger-line:nth-child(3) {
-      transform: rotate(-45deg);
-    }
-
-    /* Animation des liens du menu mobile */
-    .mobile-menu-link {
-      opacity: 0;
-      transform: translateY(-10px);
-      transition: all 0.3s ease;
-    }
-    
-    #mobileMenu.open .mobile-menu-link:nth-child(1) {
-      animation: slideDown 0.4s forwards 0.1s;
-    }
-    
-    #mobileMenu.open .mobile-menu-link:nth-child(2) {
-      animation: slideDown 0.4s forwards 0.2s;
-    }
-    
-    @keyframes slideDown {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* Style pour le lien de navigation actif */
-    .nav-link.active {
-      color: #e0a067;
-    }
-    
-    .nav-link.active .indicator {
-      width: 100%;
-    }
-
-    /* Nouveau système pour les réseaux sociaux dans À propos */
-    /* Améliorations des animations pour les badges sociaux */
-    .social-badge {
-      display: flex;
-      align-items: center;
-      background-color: white;
-      border-radius: 50px;
-      padding: 8px;
-      box-shadow: 0 4px 20px rgba(224, 160, 103, 0.08);
-      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-      margin-bottom: 12px;
-      overflow: hidden;
-      max-width: 52px;
-      cursor: pointer;
-      will-change: transform, max-width, box-shadow;
-      border: 1px solid rgba(224, 160, 103, 0.15);
-    }
-    
-    .social-badge:hover, .social-badge:focus {
-      max-width: 220px;
-      padding-right: 24px;
-      transform: translateY(-3px);
-      box-shadow: 0 8px 24px rgba(224, 160, 103, 0.12);
-      background-color: #fafafa;
-    }
-    
-    .social-badge .icon-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background-color: #e0a067; /* Couleur secondaire du site */
-      margin-right: 20px; /* Espacement augmenté entre l'icône et le texte */
-      flex-shrink: 0;
-      box-shadow: 0 4px 12px rgba(224, 160, 103, 0.2);
-    }
-    
-    .social-badge .icon-container i {
-      color: white;
-      font-size: 16px;
-    }
-    
-    .social-badge .badge-content {
-      white-space: nowrap;
-      opacity: 0;
-      transform: translateX(-20px);
-      transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
-      will-change: opacity, transform;
-      min-width: 100px; /* Assure une largeur minimale pour le contenu */
-    }
-    
-    .social-badge:hover .badge-content, .social-badge:focus .badge-content {
-      opacity: 1;
-      transform: translateX(0);
-    }
-    
-    .social-badge .badge-title {
-      font-family: 'Anton', sans-serif;
-      letter-spacing: 0.5px;
-      font-size: 14px;
-      margin: 0 0 2px 0;
-      color: #1a1a1a; /* Couleur primaire du site */
-    }
-    
-    .social-badge .badge-subtitle {
-      font-size: 12px;
-      color: #e0a067; /* Couleur secondaire du site */
-      margin: 0;
-      line-height: 1.2;
-      font-weight: 500;
-    }
-
-    .social-badges-container {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      margin-top: 24px;
-    }
-    
-    @media (min-width: 768px) {
-      .social-badges-container {
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 16px; /* Augmenter l'espace entre les badges */
-      }
-      
-      .social-badge {
-        margin-bottom: 0;
-      }
-    }
-
-    /* Adaptation des badges sociaux pour le format mobile */
-    @media (max-width: 767px) {
-      .social-badge {
-        max-width: 100%;
-        padding-right: 16px;
-        margin-bottom: 10px;
-        transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-      }
-      
-      .social-badge .badge-content {
-        opacity: 1;
-        transform: translateX(0);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-      }
-      
-      .social-badge:hover, .social-badge:focus, .social-badge:active {
-        transform: translateY(-2px);
-      }
-      
-      .social-badge .icon-container {
-        margin-right: 14px;
-      }
-      
-      .social-badges-container {
-        flex-direction: column;
-        width: 100%;
-      }
-    }
-  </style>
+  
 </head>
 
-<body class="bg-white text-gray-900">
+<body id="top" class="bg-primary text-accent">
   <!-- Header -->
-  <header class="fixed w-full z-50 bg-white bg-opacity-95 shadow-sm">
+  <header class="fixed w-full z-50 bg-dark bg-opacity-95 shadow-sm">
     <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-      <a href="#" class="text-3xl font-anton text-primary hover:scale-105 transition-transform duration-300 tracking-wider uppercase">cutsbyimg</a>
+      <a href="#top" class="text-3xl font-anton text-accent hover:scale-105 transition-transform duration-300 tracking-wider uppercase">cutsbyimg</a>
+      <!-- Navigation modifiée pour supprimer le background color -->
       <nav class="hidden md:flex space-x-8">
-        
-        <a href="#services" class="nav-link text-gray-800 hover:text-secondary font-anton whitespace-nowrap relative overflow-hidden group">
+        <a href="#services" class="nav-link text-accent font-anton whitespace-nowrap" id="servicesLink">
           SERVICES
-          <span class="indicator absolute bottom-0 left-0 w-0 h-0.5 bg-secondary transition-all duration-300 group-hover:w-full"></span>
         </a>
-        <a href="#about" class="nav-link text-gray-800 hover:text-secondary font-anton whitespace-nowrap relative overflow-hidden group">
+        <a href="#about" class="nav-link text-accent font-anton whitespace-nowrap" id="aboutLink">
           À PROPOS
-          <span class="indicator absolute bottom-0 left-0 w-0 h-0.5 bg-secondary transition-all duration-300 group-hover:w-full"></span>
         </a>
       </nav>
       <a href="#services"
-        class="bg-primary text-white px-6 py-2 !rounded-button font-anton hover:bg-opacity-90 transition duration-300 hover:scale-105 whitespace-nowrap">RÉSERVER</a>
+        class="bg-secondary text-accent px-6 py-2 !rounded-button font-anton hover:bg-opacity-90 transition duration-300 hover:scale-105 whitespace-nowrap">RÉSERVER</a>
       <button class="md:hidden burger-btn w-10 h-10 flex flex-col justify-center items-center" id="mobileMenuBtn" aria-label="Menu">
         <span class="burger-line"></span>
         <span class="burger-line"></span>
@@ -492,10 +60,10 @@
       </button>
     </div>
     <!-- Mobile Menu -->
-    <div id="mobileMenu" class="hidden md:hidden bg-white w-full py-4 absolute top-full left-0 shadow-md">
+    <div id="mobileMenu" class="hidden md:hidden bg-dark w-full py-4 absolute top-full left-0 shadow-md">
       <div class="container mx-auto px-4 flex flex-col space-y-4">
-        <a href="#about" class="mobile-menu-link text-gray-800 hover:text-secondary font-anton text-lg py-2 transition-colors">À PROPOS</a>
-        <a href="#services" class="mobile-menu-link text-gray-800 hover:text-secondary font-anton text-lg py-2 transition-colors">SERVICES</a>
+        <a href="#about" class="mobile-menu-link text-accent font-anton text-lg py-2 transition-transform">À PROPOS</a>
+        <a href="#services" class="mobile-menu-link text-accent font-anton text-lg py-2 transition-transform">SERVICES</a>
       </div>
     </div>
   </header>
@@ -512,126 +80,135 @@
     <div class="video-content h-full flex items-center">
       <div class="container mx-auto px-4 pt-24">
         <div class="max-w-2xl px-4">
-          <h1 class="font-anton text-white mb-8 md:mb-10 hero-title">IMG</h1>
+          <h1 class="font-anton text-accent mb-8 md:mb-10 hero-title">IMG</h1>
           <a href="#services"
-             class="bg-secondary text-white px-8 py-3 !rounded-button font-anton text-lg hover:bg-opacity-90 transition inline-block whitespace-nowrap hero-button">RÉSERVER MAINTENANT</a>
+             class="bg-secondary text-accent px-8 py-3 !rounded-button font-anton text-lg hover:bg-opacity-80 transition inline-block whitespace-nowrap hero-button">RÉSERVER MAINTENANT</a>
         </div>
       </div>
     </div>
   </section>
 
-  
-
-  <!-- Services Section -->
-  <section id="services" class="py-20 bg-gray-50">
+  <!-- Services Section - Version grille 2x2 identique à la photo -->
+  <section id="services" class="py-20 bg-primary text-accent">
     <div class="container mx-auto px-4">
-      <h2 class="text-3xl md:text-4xl font-anton text-center mb-4" data-aos="fade-up">NOS SERVICES</h2>
-      <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200">Des prestations sur mesure pour tous les styles et
+      <h2 class="text-3xl md:text-4xl font-anton text-center mb-4 text-accent" data-aos="fade-up">NOS SERVICES</h2>
+      <p class="text-accent text-center mb-12 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200">Des prestations sur mesure pour tous les styles et
         toutes les envies</p>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 md:gap-6 lg:gap-8">
-        <!-- Service Card 1 -->
-        <a href="reservation-moins-20-ans.html" class="service-card bg-white rounded-lg shadow-md overflow-hidden hover:cursor-pointer relative" data-aos="fade-up" data-aos-delay="300">
-          <div class="p-6">
-            <h3 class="text-xl font-anton mb-2">-20 ANS</h3>
-            <div class="flex justify-between items-center mb-4">
-              <span class="text-3xl font-anton text-secondary">20 CHF</span>
-              <span class="text-gray-500">35 min</span>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <!-- Service 1 - Moins de 20 ans -->
+        <div class="service-item" data-aos="fade-up" data-aos-delay="300">
+          <div class="flex flex-col h-full">
+            <div class="flex justify-between items-center mb-2">
+              <h3 class="text-2xl font-anton text-accent">-20 ANS</h3>
+              <div class="flex items-center gap-4">
+                <span class="text-accent text-lg duration">35 min</span>
+                <span class="text-2xl font-anton price">20 CHF</span>
+              </div>
             </div>
-            <div class="mt-4 text-center">
-              <span class="inline-block px-4 py-2 bg-secondary text-white rounded-button font-anton transition-transform hover:scale-105 duration-300">RÉSERVER</span>
-            </div>
-          </div>
-          <div class="card-highlight"></div>
-        </a>
-        <!-- Service Card 2 -->
-        <a href="reservation-moins-20-ans-barbe.html" class="service-card bg-white rounded-lg shadow-md overflow-hidden hover:cursor-pointer relative" data-aos="fade-up" data-aos-delay="400">
-          <div class="p-6">
-            <h3 class="text-xl font-anton mb-2">-20 ANS ET BARBE</h3>
-            <div class="flex justify-between items-center mb-4">
-              <span class="text-3xl font-anton text-secondary">25 CHF</span>
-              <span class="text-gray-500">50 min</span>
-            </div>
-            <div class="mt-4 text-center">
-              <span class="inline-block px-4 py-2 bg-secondary text-white rounded-button font-anton transition-transform hover:scale-105 duration-300">RÉSERVER</span>
+            <div class="flex-grow"></div>
+            <div class="flex justify-end mt-6">
+              <a href="reservation-moins-20-ans.html" class="inline-block px-8 py-2 bg-secondary text-accent rounded-button font-anton transition-transform hover:scale-105 duration-300">RÉSERVER</a>
             </div>
           </div>
-          <div class="card-highlight"></div>
-        </a>
-        <!-- Service Card 3 -->
-        <a href="reservation-plus-20-ans.html" class="service-card bg-white rounded-lg shadow-md overflow-hidden hover:cursor-pointer relative" data-aos="fade-up" data-aos-delay="500">
-          <div class="p-6">
-            <h3 class="text-xl font-anton mb-2">+20 ANS</h3>
-            <div class="flex justify-between items-center mb-4">
-              <span class="text-3xl font-anton text-secondary">25 CHF</span>
-              <span class="text-gray-500">35 min</span>
+        </div>
+        
+        <!-- Service 2 - Moins de 20 ans et barbe -->
+        <div class="service-item" data-aos="fade-up" data-aos-delay="400">
+          <div class="flex flex-col h-full">
+            <div class="flex justify-between items-center mb-2">
+              <h3 class="text-2xl font-anton text-accent">-20 ANS ET BARBE</h3>
+              <div class="flex items-center gap-4">
+                <span class="text-accent text-lg duration">50 min</span>
+                <span class="text-2xl font-anton price">25 CHF</span>
+              </div>
             </div>
-            <div class="mt-4 text-center">
-              <span class="inline-block px-4 py-2 bg-secondary text-white rounded-button font-anton transition-transform hover:scale-105 duration-300">RÉSERVER</span>
-            </div>
-          </div>
-          <div class="card-highlight"></div>
-        </a>
-        <!-- Service Card 4 -->
-        <a href="reservation-plus-20-ans-barbe.html" class="service-card bg-white rounded-lg shadow-md overflow-hidden hover:cursor-pointer relative" data-aos="fade-up" data-aos-delay="600">
-          <div class="p-6">
-            <h3 class="text-xl font-anton mb-2">+20 ANS ET BARBE</h3>
-            <div class="flex justify-between items-center mb-4">
-              <span class="text-3xl font-anton text-secondary">30 CHF</span>
-              <span class="text-gray-500">50 min</span>
-            </div>
-            <div class="mt-4 text-center">
-              <span class="inline-block px-4 py-2 bg-secondary text-white rounded-button font-anton transition-transform hover:scale-105 duration-300">RÉSERVER</span>
+            <div class="flex-grow"></div>
+            <div class="flex justify-end mt-6">
+              <a href="reservation-moins-20-ans-barbe.html" class="inline-block px-8 py-2 bg-secondary text-accent rounded-button font-anton transition-transform hover:scale-105 duration-300">RÉSERVER</a>
             </div>
           </div>
-          <div class="card-highlight"></div>
-        </a>
+        </div>
+        
+        <!-- Service 3 - Plus de 20 ans -->
+        <div class="service-item" data-aos="fade-up" data-aos-delay="500">
+          <div class="flex flex-col h-full">
+            <div class="flex justify-between items-center mb-2">
+              <h3 class="text-2xl font-anton text-accent">+20 ANS</h3>
+              <div class="flex items-center gap-4">
+                <span class="text-accent text-lg duration">35 min</span>
+                <span class="text-2xl font-anton price">25 CHF</span>
+              </div>
+            </div>
+            <div class="flex-grow"></div>
+            <div class="flex justify-end mt-6">
+              <a href="reservation-plus-20-ans.html" class="inline-block px-8 py-2 bg-secondary text-accent rounded-button font-anton transition-transform hover:scale-105 duration-300">RÉSERVER</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Service 4 - Plus de 20 ans et barbe -->
+        <div class="service-item" data-aos="fade-up" data-aos-delay="600">
+          <div class="flex flex-col h-full">
+            <div class="flex justify-between items-center mb-2">
+              <h3 class="text-2xl font-anton text-accent">+20 ANS ET BARBE</h3>
+              <div class="flex items-center gap-4">
+                <span class="text-accent text-lg duration">50 min</span>
+                <span class="text-2xl font-anton price">30 CHF</span>
+              </div>
+            </div>
+            <div class="flex-grow"></div>
+            <div class="flex justify-end mt-6">
+              <a href="reservation-plus-20-ans-barbe.html" class="inline-block px-8 py-2 bg-secondary text-accent rounded-button font-anton transition-transform hover:scale-105 duration-300">RÉSERVER</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- About Section -->
-  <section id="about" class="py-20 bg-gray-50">
+  <section id="about" class="py-20 bg-primary text-accent">
     <div class="container mx-auto px-4">
-      <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
-        <div class="md:w-1/2" data-aos="fade-right" data-aos-duration="1000">
+      <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">        <div class="md:w-1/2" data-aos="fade-right" data-aos-duration="1000">
           <img
-            src="https://readdy.ai/api/search-image?query=confident%2520professional%2520male%2520barber%2520in%2520stylish%2520clothes%252C%2520standing%2520with%2520arms%2520crossed%2520in%2520modern%2520barbershop%252C%2520warm%2520lighting%252C%2520high%2520end%2520portrait%252C%2520minimalist%2520background%252C%2520fashion%2520photography&width=600&height=800&seq=10&orientation=portrait"
+            src="./media/photoIMG.jpg"
             alt="IMG Portrait" class="rounded-lg shadow-lg w-full max-w-sm md:max-w-md mx-auto hover:shadow-2xl transition-shadow duration-500">
         </div>
         <div class="md:w-1/2" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
-          <h2 class="text-3xl md:text-4xl font-anton mb-6">À PROPOS DE MOI</h2>
-          <p class="text-lg text-gray-700 mb-6">Passionné par l'art de la coiffure depuis plus de 10 ans, je crée des
+          <h2 class="text-3xl md:text-4xl font-anton mb-6 text-accent">À PROPOS DE MOI</h2>
+          <p class="text-accent mb-6">Passionné par l'art de la coiffure depuis plus de 10 ans, je crée des
             styles qui reflètent la personnalité unique de chaque client.</p>
-          <p class="text-lg text-gray-700 mb-8">Ma philosophie : une coupe parfaite doit être aussi belle à
+          <p class="text-accent mb-8">Ma philosophie : une coupe parfaite doit être aussi belle à
             entretenir au quotidien.</p>
             
-          <h3 class="font-anton text-lg mb-6 text-gray-800">MES RÉSEAUX</h3>
-          <div class="social-badges-container" data-aos="fade-up" data-aos-delay="300">
-            <a href="https://www.tiktok.com/" target="_blank" class="social-badge">
+          <!-- Section MES RÉSEAUX centrée -->
+          <h3 class="font-anton text-lg mb-6 text-accent text-center">MES RÉSEAUX</h3>
+          <div class="social-badges-container" data-aos="fade-up" data-aos-delay="300">            <a href="https://www.tiktok.com/@cutsbyimg?_t=ZN-8xMm7YTGTO2&_r=1" target="_blank" class="social-badge border-accent">
               <div class="icon-container">
                 <i class="ri-tiktok-line"></i>
               </div>
               <div class="badge-content">
-                <p class="badge-title">TIKTOK</p>
-                <p class="badge-subtitle">@cutsbyimg</p>
+                <p class="badge-title text-accent">TIKTOK</p>
+                <p class="badge-subtitle text-accent">@cutsbyimg</p>
               </div>
             </a>
-            <a href="https://www.instagram.com/" target="_blank" class="social-badge">
+            <a href="https://www.instagram.com/cutsbyimg?igsh=MTc4azA5MjB5c2Z0aQ%3D%3D&utm_source=qr" target="_blank" class="social-badge border-accent">
               <div class="icon-container">
                 <i class="ri-instagram-line"></i>
               </div>
               <div class="badge-content">
-                <p class="badge-title">INSTAGRAM</p>
-                <p class="badge-subtitle">@cutsbyimg</p>
+                <p class="badge-title text-accent">INSTAGRAM</p>
+                <p class="badge-subtitle text-accent">@cutsbyimg</p>
               </div>
             </a>
-            <a href="https://www.youtube.com/" target="_blank" class="social-badge">
+            <a href="https://youtube.com/@cutsbyimg?si=rdrfEHaR75wjlS4L" target="_blank" class="social-badge border-accent">
               <div class="icon-container">
                 <i class="ri-youtube-line"></i>
               </div>
               <div class="badge-content">
-                <p class="badge-title">YOUTUBE</p>
-                <p class="badge-subtitle">@cutsbyimg</p>
+                <p class="badge-title text-accent">YOUTUBE</p>
+                <p class="badge-subtitle text-accent">@cutsbyimg</p>
               </div>
             </a>
           </div>
@@ -641,36 +218,34 @@
   </section>
 
   <!-- Footer -->
-  <footer class="bg-primary text-white py-10">
+  <footer class="bg-primary text-accent py-10">
     <div class="container mx-auto px-4">
-      <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
-        <div class="mb-6 md:mb-0" data-aos="fade-right" data-aos-offset="0">
-          <a href="#" class="text-2xl sm:text-3xl font-anton text-white mb-2 sm:mb-4 inline-block hover:scale-105 transition-transform duration-300 tracking-wider uppercase">cutsbyimg</a>
-          <p class="text-gray-300 text-sm sm:text-base">L'art de la coupe sur mesure</p>
-        </div>
-        <div class="flex space-x-6" data-aos="fade-left" data-aos-offset="0">
-          <a href="https://instagram.com" target="_blank" class="text-white hover:text-secondary transition-all duration-300 hover:scale-110">
+      <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">        <div class="mb-6 md:mb-0" data-aos="fade-right" data-aos-offset="0">
+          <a href="#top" class="text-2xl sm:text-3xl font-anton text-accent mb-2 sm:mb-4 inline-block hover:scale-102 origin-left transition-transform duration-300 tracking-wider uppercase">cutsbyimg</a>
+          <p class="text-accent text-sm sm:text-base">L'art de la coupe sur mesure</p>
+        </div><div class="flex space-x-6" data-aos="fade-left" data-aos-offset="0">
+          <a href="https://www.instagram.com/cutsbyimg?igsh=MTc4azA5MjB5c2Z0aQ%3D%3D&utm_source=qr" target="_blank" class="text-accent transition-all duration-300 hover:scale-110">
             <div class="w-10 h-10 flex items-center justify-center">
               <i class="ri-instagram-line text-xl"></i>
             </div>
           </a>
-          <a href="https://www.tiktok.com" target="_blank" class="text-white hover:text-secondary transition-all duration-300 hover:scale-110">
+          <a href="https://www.tiktok.com/@cutsbyimg?_t=ZN-8xMm7YTGTO2&_r=1" target="_blank" class="text-accent transition-all duration-300 hover:scale-110">
             <div class="w-10 h-10 flex items-center justify-center">
               <i class="ri-tiktok-line text-xl"></i>
             </div>
           </a>
-          <a href="https://www.youtube.com" target="_blank" class="text-white hover:text-secondary transition-all duration-300 hover:scale-110">
+          <a href="https://youtube.com/@cutsbyimg?si=rdrfEHaR75wjlS4L" target="_blank" class="text-accent transition-all duration-300 hover:scale-110">
             <div class="w-10 h-10 flex items-center justify-center">
               <i class="ri-youtube-line text-xl"></i>
             </div>
           </a>
         </div>
-      </div>
-      <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-        <p class="text-sm text-gray-400 mb-4 md:mb-0">© 2025 CutsbyIMG. Tous droits réservés.</p>
-        <div class="flex space-x-6 text-sm text-gray-400">
-          <a href="#" class="hover:text-white transition-colors duration-300">Mentions légales</a>
-          <a href="#" class="hover:text-white transition-colors duration-300">Politique de confidentialité</a>
+      </div>      <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <p class="text-sm text-accent mb-4 md:mb-0">© 2025 CutsbyIMG. Tous droits réservés.</p>
+        <p class="text-sm text-accent font-medium tracking-wide my-4 md:my-0">Designed by <a href="https://digitaria.ch" target="_blank" class="text-secondary hover:opacity-80 transition-opacity">Digitaria</a></p>
+        <div class="flex space-x-6 text-sm">
+          <a href="#" class="text-accent transition-transform duration-300">Mentions légales</a>
+          <a href="#" class="text-accent transition-transform duration-300">Politique de confidentialité</a>
         </div>
       </div>
     </div>
@@ -678,102 +253,48 @@
 
   <!-- Scripts -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script id="mobileMenuScript">
-    document.addEventListener('DOMContentLoaded', function () {
-      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-      const mobileMenu = document.getElementById('mobileMenu');
-      
-      mobileMenuBtn.addEventListener('click', function () {
-        mobileMenuBtn.classList.toggle('active');
-        mobileMenu.classList.toggle('hidden');
-        
-        // Ajouter la classe open pour les animations
-        if (!mobileMenu.classList.contains('hidden')) {
-          setTimeout(() => {
-            mobileMenu.classList.add('open');
-          }, 10);
-        } else {
-          mobileMenu.classList.remove('open');
-        }
-      });
-      
-      // Fermeture du menu mobile au clic sur un lien
-      const mobileLinks = mobileMenu.querySelectorAll('a');
-      mobileLinks.forEach(link => {
-        link.addEventListener('click', function () {
-          mobileMenu.classList.remove('open');
-          mobileMenu.classList.add('hidden');
-          mobileMenuBtn.classList.remove('active');
-        });
-      });
-    });
-  </script>
-
-  <script id="smoothScrollScript">
-    document.addEventListener('DOMContentLoaded', function () {
-      // Smooth scrolling for anchor links
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-          e.preventDefault();
-          const targetId = this.getAttribute('href');
-          const targetElement = document.querySelector(targetId);
-          if (targetElement) {
-            window.scrollTo({
-              top: targetElement.offsetTop - 80, // Adjust for header height
-              behavior: 'smooth'
-            });
-          }
-        });
-      });
-    });
-  </script>
+  <script src="js/main.js"></script>
+  <!-- Ajoutez ce script avant la fermeture du body -->
   <script>
-    // Initialisation des animations AOS
-    document.addEventListener('DOMContentLoaded', function() {
-      AOS.init({
-        duration: 1000,
-        easing: 'cubic-bezier(0.16, 1, 0.3, 1)', // Courbe d'accélération plus linéaire
-        once: false,
-        mirror: false, // Désactiver mirror pour éviter les effets de rebond
-        anchorPlacement: 'top-bottom'
-      });
-    });
-  </script>
-  <script>
-    // Modification du script pour suivre la section active
-    document.addEventListener('DOMContentLoaded', function() {
-      // Fonction pour mettre à jour la navigation active au défilement
-      function updateActiveNavOnScroll() {
-        const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('.nav-link');
-        
-        const scrollPosition = window.scrollY + 300; // On ajoute un offset pour avoir une meilleure détection
-        
-        sections.forEach(section => {
-          const sectionTop = section.offsetTop;
-          const sectionHeight = section.offsetHeight;
-          const sectionId = section.getAttribute('id');
-          
-          if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-            // Désactiver tous les liens
-            navLinks.forEach(link => {
-              link.classList.remove('active');
-            });
-            
-            // Activer le lien correspondant à la section
-            const activeLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
-            if (activeLink) {
-              activeLink.classList.add('active');
-            }
-          }
-        });
+    // Fonction pour mettre à jour la navigation active selon la section visible
+    function updateActiveNav() {
+      const servicesSection = document.getElementById('services');
+      const aboutSection = document.getElementById('about');
+      const servicesLink = document.getElementById('servicesLink');
+      const aboutLink = document.getElementById('aboutLink');
+      
+      const scrollPosition = window.scrollY + 100; // Ajustement pour le header
+      
+      // Retirer toutes les classes actives d'abord
+      servicesLink.classList.remove('active');
+      servicesLink.classList.remove('active-services');
+      aboutLink.classList.remove('active');
+      
+      // Déterminer quelle section est visible
+      if (aboutSection.offsetTop <= scrollPosition && 
+          aboutSection.offsetTop + aboutSection.offsetHeight > scrollPosition) {
+        aboutLink.classList.add('active');
+      } else if (servicesSection.offsetTop <= scrollPosition && 
+                 servicesSection.offsetTop + servicesSection.offsetHeight > scrollPosition) {
+        servicesLink.classList.add('active');
       }
-      
-      // Écouter l'événement de défilement
-      window.addEventListener('scroll', updateActiveNavOnScroll);
-      
-      // Appel initial pour définir l'état au chargement
-      updateActiveNavOnScroll();
+    }
+    
+    // Mettre à jour au chargement de la page et au défilement
+    window.addEventListener('load', updateActiveNav);
+    window.addEventListener('scroll', updateActiveNav);
+    
+    // Vérifier la section active dès le chargement
+    document.addEventListener('DOMContentLoaded', function() {
+      // Attribuer la classe active en fonction du hash dans l'URL
+      if (window.location.hash === '#services') {
+        document.getElementById('servicesLink').classList.add('active');
+      } else if (window.location.hash === '#about') {
+        document.getElementById('aboutLink').classList.add('active');
+      } else {
+        // Si aucun hash, vérifier quelle section est visible
+        updateActiveNav();
+      }
     });
   </script>
 </body>

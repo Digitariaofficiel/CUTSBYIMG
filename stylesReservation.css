@@ -1,0 +1,109 @@
+/* Styles spécifiques aux pages de réservation */
+:root {
+  --blue-medium: #0D47A1;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  scroll-behavior: smooth;
+  width: 100%;
+  overflow-x: hidden !important;
+  background-color: #1F1F1F;
+  color: #FDF4E3;
+}
+
+html {
+  overflow-x: hidden !important;
+  width: 100%;
+  max-width: 100% !important;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Padding top pour tenir compte du header fixe */
+.pt-mobile {
+  padding-top: 100px;
+}
+
+@media (min-width: 768px) {
+  .pt-mobile {
+    padding-top: 120px;
+  }
+}
+
+/* Animation d'entrée de la page */
+.page-transition {
+  animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Animations des éléments */
+.slide-in-left {
+  animation: slideFromLeft 0.6s ease-out forwards;
+}
+
+.slide-in-right {
+  animation: slideFromRight 0.6s ease-out forwards;
+}
+
+@keyframes slideFromLeft {
+  from { transform: translateX(-20px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideFromRight {
+  from { transform: translateX(20px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+/* Style pour l'iframe de réservation */
+.iframe-container {
+  position: relative;
+  width: 100%;
+  background-color: rgba(128, 128, 128, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.reservation-iframe {
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  transition: height 0.3s ease;
+}
+
+/* Bouton de retour */
+.back-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--blue-medium) !important;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.back-button:hover {
+  transform: translateX(-5px);
+}
+
+/* Améliorations de l'interface de la boîte d'info */
+.service-info {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-info:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Fix pour l'affichage mobile */
+@media (max-width: 768px) {
+  .service-info {
+    margin-bottom: 1.5rem;
+  }
+}

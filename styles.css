@@ -1,0 +1,658 @@
+@media (max-width: 640px) {
+      .container {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+    }
+
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    :where([class^="ri-"])::before {
+      content: "\f3c2";
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      scroll-behavior: smooth;
+      width: 100%;
+      overflow-x: hidden !important;
+      background-color: #1F1F1F;
+      color: #FDF4E3;
+    }
+
+    html {
+      overflow-x: hidden !important;
+      width: 100%;
+      max-width: 100% !important;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    /* Fix pour les conteneurs qui pourraient dépasser */
+    .container {
+      max-width: 100%;
+    }
+
+    .video-container {
+      position: relative;
+      height: 100vh;
+      min-height: 480px;
+      overflow: hidden;
+    }
+
+    @media (max-width: 768px) {
+      .video-container {
+        height: 90vh;
+        min-height: 400px;
+      }
+    }
+
+    .video-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+
+    .video-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .service-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background-color: #0A2647; /* Bleu plus profond et plus élégant */
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    .custom-checkbox {
+      display: inline-block;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .custom-checkbox input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .checkmark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 20px;
+      width: 20px;
+      background-color: #fff;
+      border: 2px solid #0A2647; /* Mise à jour du bleu */
+      border-radius: 4px;
+    }
+
+    .custom-checkbox input:checked~.checkmark:after {
+      content: "";
+      position: absolute;
+      display: block;
+      left: 6px;
+      top: 2px;
+      width: 5px;
+      height: 10px;
+      border: solid #0A2647; /* Mise à jour du bleu */
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+
+    .testimonial-slider {
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+    }
+
+    .testimonial-slide {
+      scroll-snap-align: start;
+    }
+
+    h1,
+    h2,
+    h3,
+    .font-anton {
+      font-family: 'Anton', sans-serif;
+      letter-spacing: 0.5px;
+    }
+
+    /* Animations personnalisées */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes slideUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    
+    .animate-fadeIn {
+      animation: fadeIn 1s ease-out forwards;
+    }
+    
+    .animate-slideUp {
+      animation: slideUp 1.2s ease-out forwards;
+    }
+    
+    .animate-pulse-slow {
+      animation: pulse 3s infinite ease-in-out;
+    }
+    
+    /* Animation du texte du hero - Modification du timing */
+    .hero-title {
+      opacity: 0;
+      animation: fadeIn 1.2s ease-out 0.3s forwards;
+      font-size: 4rem; /* Taille de base augmentée */
+    }
+    
+    .hero-button {
+      opacity: 0;
+      animation: fadeIn 1.2s ease-out 0.8s forwards, pulse 3s infinite ease-in-out 2s;
+    }
+    
+    /* Responsive pour le titre héro plus grand */
+    @media (min-width: 768px) {
+      .hero-title {
+        font-size: 6rem;
+      }
+    }
+    
+    @media (min-width: 1024px) {
+      .hero-title {
+        font-size: 8rem;
+      }
+    }
+    
+    @media (max-width: 640px) {
+      .hero-title {
+        font-size: 3.5rem;
+      }
+    }
+    
+    /* Animation des services */
+    .service-card {
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+    }
+    
+    .service-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+    }
+    
+    .service-card:hover .card-highlight {
+      width: 100%;
+    }
+    
+    .card-highlight {
+      height: 3px;
+      width: 0;
+      background-color: #0A2647; /* Mise à jour du bleu */
+      transition: width 0.4s ease-in-out;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+
+    /* Empêcher le défilement horizontal */
+    html, body {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+    
+    /* Assurez-vous que les éléments ne dépassent pas la largeur de l'écran */
+    img, video, iframe {
+      max-width: 100%;
+    }
+    
+    /* Fix spécifique pour les animations qui pourraient causer un débordement */
+    [data-aos] {
+      overflow: hidden;
+    }
+
+    /* Styles pour le menu burger amélioré */
+    .burger-btn {
+      cursor: pointer;
+      z-index: 51;
+      position: relative;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .burger-line {
+      width: 24px;
+      height: 2px;
+      background-color: #FDF4E3;
+      display: block;
+      position: absolute;
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .burger-line:nth-child(1) {
+      transform: translateY(-6px);
+    }
+
+    .burger-line:nth-child(3) {
+      transform: translateY(6px);
+    }
+
+    /* Animation précise pour former un X */
+    .burger-btn.active .burger-line:nth-child(1) {
+      transform: rotate(45deg);
+    }
+
+    .burger-btn.active .burger-line:nth-child(2) {
+      opacity: 0;
+      width: 0;
+    }
+
+    .burger-btn.active .burger-line:nth-child(3) {
+      transform: rotate(-45deg);
+    }
+
+    /* Animation des liens du menu mobile */
+    .mobile-menu-link {
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+    }
+    
+    #mobileMenu.open .mobile-menu-link:nth-child(1) {
+      animation: slideDown 0.4s forwards 0.1s;
+    }
+    
+    #mobileMenu.open .mobile-menu-link:nth-child(2) {
+      animation: slideDown 0.4s forwards 0.2s;
+    }
+    
+    @keyframes slideDown {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Correction du background dans le nav - remettre comme avant */
+header {
+  background-color: #808080 !important; /* Comme avant (#808080 = dark) */
+  color: #FDF4E3;
+}
+
+/* Mobile Menu background également */
+#mobileMenu {
+  background-color: #808080 !important;
+}
+
+/* Style pour les liens de navigation */
+.nav-link {
+  position: relative;
+  overflow: hidden;
+  padding: 6px 16px !important;
+  transition: all 0.3s ease;
+  background-color: transparent !important;
+}
+
+/* Soulignement des liens de navigation avec animation bidirectionnelle */
+.nav-link::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 16px;
+  right: 16px;
+  height: 2px;
+  background-color: var(--blue-medium) !important;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease-in-out; /* Animation dans les deux sens */
+  display: block !important;
+}
+
+/* Animation au survol - affichage */
+.nav-link:hover::before {
+  transform: scaleX(1);
+}
+
+/* Animation à la sortie du survol - disparition */
+.nav-link:not(:hover):not(.active)::before {
+  transform: scaleX(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Style pour les liens actifs - soulignement permanent */
+.nav-link.active::before {
+  transform: scaleX(1);
+  background-color: var(--blue-medium) !important;
+}
+
+/* Suppression des styles redondants et contradictoires */
+.nav-link::after,
+.nav-link.active::after,
+.nav-link:hover::after,
+.nav-link.active-services::after,
+.indicator, 
+.nav-link .indicator,
+.nav-link:hover .indicator,
+.nav-link.active .indicator,
+.group:hover .indicator,
+.nav-link span,
+.nav-link:hover span,
+.nav-link::after,
+.nav-link:hover::after {
+  display: none !important;
+}
+
+/* Style pour le texte des liens au survol */
+.nav-link:hover {
+  color: #FDF4E3 !important;
+  background-color: transparent !important;
+}
+
+/* Suppression des styles background pour les liens actifs */
+.nav-link.active, .nav-link.active-services {
+  position: relative;
+  background-color: transparent !important;
+  color: #FDF4E3 !important;
+}
+
+/* Nouveau système pour les réseaux sociaux dans À propos */
+/* Améliorations des animations pour les badges sociaux */
+.social-badge {
+  display: flex;
+  align-items: center;
+  background-color: #808080;
+  border-radius: 50px;
+  padding: 8px 24px 8px 8px; /* Padding fixe pour apparaître toujours déployé */
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.08);
+  margin-bottom: 12px; /* Réduire l'espace entre les badges */
+  width: 100%;
+  max-width: 220px; /* Largeur fixe, toujours déployé */
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: transform 0.3s ease; /* Uniquement transition pour l'effet de survol */
+}
+
+.social-badge:hover, .social-badge:focus {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(3, 27, 73, 0.2);
+  z-index: 30; /* Au survol, mettre au-dessus de tous les autres éléments */
+}
+
+.social-badge .icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #0A2647; /* Bleu uniforme */
+  margin-right: 20px;
+  flex-shrink: 0;
+}
+
+.social-badge .badge-content {
+  white-space: nowrap;
+  opacity: 1; /* Toujours visible */
+}
+
+.social-badges-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centre les badges horizontalement */
+  margin-top: 2.5rem !important; /* Plus d'espace au-dessus des badges sociaux */
+  width: 100%; /* Assure que le conteneur prend toute la largeur */
+  z-index: 10; /* Assure que les badges sont au-dessus des autres éléments */
+  position: relative; /* Nécessaire pour que z-index fonctionne */
+  padding-top: 8px; /* Moins d'espace en haut */
+  padding-bottom: 20px; /* Moins d'espace en bas */
+}
+
+/* Réduire l'espace pour le premier élément */
+.social-badge:first-child {
+  margin-top: 10px; /* Moins d'espace pour le premier élément */
+}
+
+/* S'assurer que les badges ont un espacement uniforme */
+.social-badge + .social-badge {
+  margin-top: 0; /* Pas d'espace supplémentaire entre les badges adjacents */
+}
+
+/* Correction pour empêcher le haut du badge TikTok d'être coupé lors du survol */
+.social-badge {
+  transform-origin: center bottom; /* Déplace l'origine de transformation vers le bas */
+  margin-top: 15px; /* Espace au-dessus pour l'animation */
+  /* Assurer que l'animation ne déborde pas */
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* Modification de l'animation au survol pour éviter le débordement */
+.social-badge:hover, .social-badge:focus {
+  transform: scale(1.05);
+  box-shadow: 0 8px 24px rgba(3, 27, 73, 0.2);
+  position: relative;
+  z-index: 30;
+}
+
+/* Design responsive optimisé */
+@media (max-width: 768px) {
+  .service-item {
+    padding: 1rem 0;
+  }
+  
+  .service-item .flex.justify-between {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .service-item .flex.justify-end {
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .service-item a {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* Séparateur subtil entre les services sur desktop */
+@media (min-width: 768px) {
+  .service-item {
+    position: relative;
+  }
+  
+  .service-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+    width: 80%;
+    height: 1px;
+    background-color: rgba(128, 128, 128, 0.1);
+  }
+}
+
+/* Assurer que le bouton se positionne correctement en bas peu importe la hauteur du titre */
+.service-item .flex-col {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+}
+
+/* Correction du soulignement dans la navigation */
+.nav-link .indicator {
+  width: 0; /* Assure que l'indicateur est invisible par défaut */
+}
+
+.nav-link.active .indicator {
+  width: 100% !important; /* Visible uniquement pour les liens actifs */
+}
+
+/* Désactiver l'animation de l'indicateur pour les liens non actifs */
+.nav-link:not(.active) .indicator {
+  display: none !important; /* Cache l'indicateur pour les liens non actifs */
+}
+
+/* Styles pour les éléments de service conformes à la photo */
+.service-item {
+  position: relative;
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 8px;
+  padding: 1.5rem !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  background-color: rgba(10, 38, 71, 0.03); /* Fond légèrement bleuté mais très subtil */
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.service-item:hover {
+  transform: translateY(-3px);
+  background-color: rgba(10, 38, 71, 0.07);
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.15);
+}
+
+/* Style pour les prix comme sur la photo */
+.service-item .price {
+  color: #FDF4E3 !important; /* Blanc cassé pour le prix */
+  font-weight: 600;
+}
+
+/* Style pour le temps comme sur la photo */
+.service-item .duration {
+  opacity: 0.8;
+  color: #FDF4E3;
+}
+
+/* Style pour les boutons RÉSERVER conformes à la photo */
+.service-item a {
+  background-color: var(--blue-medium) !important;
+  color: #FDF4E3 !important;
+  padding: 0.5rem 2rem;
+  border-radius: 8px;
+  font-family: 'Anton', sans-serif;
+  letter-spacing: 0.5px;
+  transition: transform 0.3s ease;
+  display: inline-block;
+  text-align: center;
+}
+
+.service-item a:hover {
+  transform: scale(1.05);
+  background-color: var(--blue-medium) !important; /* Gardez la même couleur au survol */
+}
+
+/* Amélioration des espacements pour correspondre à la photo */
+@media (min-width: 768px) {
+  .service-item {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .service-item > div {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+  }
+}
+
+/* Couleur bleue encore plus foncée pour tous les boutons */
+:root {
+  --blue-medium: #0D47A1; /* Bleu plus foncé que #1565C0 qui s'harmonise mieux avec le fond sombre */
+}
+
+/* Remplacer toutes les occurrences de couleurs bleues par la nouvelle couleur */
+.bg-secondary, 
+a.bg-secondary, 
+button.bg-secondary, 
+.btn-primary,
+a[href="#services"].bg-secondary,
+a.bg-\[#0A2647\],
+a[href="#services"].bg-\[#0A2647\],
+a[href="#services"],
+.service-item a,
+.hero-button,
+.inline-block.bg-secondary,
+header a[href="#services"],
+header > .container > a[href="#services"],
+a.text-secondary,
+.nav-link.active-services {
+  background-color: var(--blue-medium) !important;
+  color: #FDF4E3 !important;
+}
+
+/* Mise à jour des éléments d'interface non-boutons avec la même couleur */
+.social-badge .icon-container,
+.nav-link::before,
+.nav-link.active::before,
+.card-highlight,
+.checkmark {
+  background-color: var(--blue-medium) !important;
+}
+
+/* S'assurer que les bordures de la checkbox utilisent aussi cette couleur */
+.custom-checkbox input:checked ~ .checkmark:after,
+.checkmark {
+  border-color: var(--blue-medium) !important;
+}
+
+/* Couleur de survol légèrement plus claire */
+a.bg-secondary:hover,
+button.bg-secondary:hover,
+.btn-primary:hover,
+.hero-button:hover,
+.service-item a:hover,
+header .container > a[href="#services"]:hover {
+  background-color: #0D47A1 !important; /* Même couleur au survol pour maintenir la cohérence */
+  color: #FDF4E3 !important;
+}
+
+/* Remplacer les références hardcodées à #0A2647 dans le code Tailwind */
+[class*="bg-[#0A2647]"] {
+  background-color: var(--blue-medium) !important;
+}
+
+/* Couleur de fond du footer identique à celle du nav */
+footer {
+  background-color: #808080 !important; /* Même couleur que le header */
+}
+
+/* Ajuster la couleur de la bordure du footer pour qu'elle soit visible */
+footer .border-t {
+  border-color: rgba(255, 255, 255, 0.1) !important; /* Bordure légèrement visible sur le fond gris */
+}
