@@ -57,12 +57,11 @@
         <span class="burger-line"></span>
         <span class="burger-line"></span>
       </button>
-    </div>
-    <!-- Mobile Menu -->
+    </div>    <!-- Mobile Menu -->
     <div id="mobileMenu" class="hidden md:hidden bg-dark w-full py-4 absolute top-full left-0 shadow-md">
       <div class="container mx-auto px-4 flex flex-col space-y-4">
-        <a href="#about" class="mobile-menu-link text-accent font-anton text-lg py-2 transition-transform">À PROPOS</a>
         <a href="#services" class="mobile-menu-link text-accent font-anton text-lg py-2 transition-transform">SERVICES</a>
+        <a href="#about" class="mobile-menu-link text-accent font-anton text-lg py-2 transition-transform">À PROPOS</a>
       </div>
     </div>
   </header>
@@ -251,8 +250,7 @@
     </div>
   </footer>
 
-  <!-- Scripts -->  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
+  <!-- Scripts -->  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>  <script>
     // Initialisation de la bibliothèque AOS pour les animations au scroll
     document.addEventListener('DOMContentLoaded', function() {
       AOS.init({
@@ -260,39 +258,41 @@
         once: false,
         mirror: true
       });
-      
+
       // Code pour le menu burger
       const mobileMenuBtn = document.getElementById('mobileMenuBtn');
       const mobileMenu = document.getElementById('mobileMenu');
-        if (mobileMenuBtn && mobileMenu) {
-        // Utiliser touchstart et click pour assurer la compatibilité sur tous les appareils
-        ['click', 'touchstart'].forEach(event => {
-          mobileMenuBtn.addEventListener(event, function(e) {
-            // Empêcher le comportement par défaut pour éviter les doubles déclenchements
-            e.preventDefault();
-            
-            // Toggle la classe active sur le bouton burger
-            this.classList.toggle('active');
-            
-            // Toggle l'affichage du menu mobile
-            if (mobileMenu.classList.contains('hidden')) {
-              mobileMenu.classList.remove('hidden');
-              mobileMenu.classList.add('open');
-            } else {
-              mobileMenu.classList.add('hidden');
-              mobileMenu.classList.remove('open');
-            }
-          }, { passive: false }); // passive: false permet d'utiliser preventDefault
+      
+      if (mobileMenuBtn && mobileMenu) {
+        // Utiliser le click pour fonctionner sur mobile
+        mobileMenuBtn.addEventListener('click', function(e) {
+          // Empêcher le comportement par défaut
+          e.preventDefault();
+          e.stopPropagation();
+          
+          // Toggle la classe active sur le bouton burger
+          this.classList.toggle('active');
+          
+          // Toggle l'affichage du menu mobile
+          if (mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.remove('hidden');
+            mobileMenu.classList.add('open');
+          } else {
+            mobileMenu.classList.add('hidden');
+            mobileMenu.classList.remove('open');
+          }
         });
-          // Fermer le menu quand on clique sur un lien
+        
+        // Gérer les clics sur les liens du menu
         const mobileLinks = mobileMenu.querySelectorAll('a');
-        mobileLinks.forEach(link => {
-          ['click', 'touchend'].forEach(event => {
-            link.addEventListener(event, (e) => {
+        mobileLinks.forEach(function(link) {
+          link.addEventListener('click', function() {
+            // Fermer le menu après un petit délai pour laisser le temps au navigateur de traiter le clic
+            setTimeout(function() {
               mobileMenu.classList.add('hidden');
               mobileMenu.classList.remove('open');
               mobileMenuBtn.classList.remove('active');
-            });
+            }, 100);
           });
         });
       }
@@ -340,6 +340,30 @@
         // Si aucun hash, vérifier quelle section est visible
         updateActiveNav();
       }
+    });
+  </script>
+  <script>
+    // Amélioration de la navigation par ancres
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        
+        if (targetId !== "#") {
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            // Ajustement pour le header fixe
+            const headerOffset = 80;
+            const elementPosition = targetElement.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+          }
+        }
+      });
     });
   </script>
 </body>
