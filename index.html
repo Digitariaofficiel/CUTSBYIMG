@@ -13,8 +13,7 @@
     rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com/3.4.16"></script>
-  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.tailwindcss.com/3.4.16"></script>  <link rel="stylesheet" href="./styles.css">
   <script>
     tailwind.config = {
       theme: {
@@ -70,8 +69,7 @@
 
   <!-- Hero Section with Video Background -->
   <section class="video-container">
-    <div class="video-overlay"></div>
-    <video autoplay muted loop class="absolute object-cover w-full h-full">
+    <div class="video-overlay"></div>    <video autoplay muted loop playsinline class="absolute object-cover w-full h-full">
       <source
         src="https://readdy.ai/api/search-image?query=professional%2520male%2520hairdresser%2520cutting%2520client%2520hair%2520in%2520modern%2520barbershop%252C%2520focus%2520on%2520hands%2520with%2520scissors%252C%2520stylish%2520interior%2520with%2520warm%2520lighting%252C%2520cinematic%2520quality%252C%2520shallow%2520depth%2520of%2520field&width=1920&height=1080&seq=1&orientation=landscape"
         type="video/mp4">
@@ -170,7 +168,8 @@
   <!-- About Section -->
   <section id="about" class="py-20 bg-primary text-accent">
     <div class="container mx-auto px-4">
-      <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">        <div class="md:w-1/2" data-aos="fade-right" data-aos-duration="1000">
+      <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+        <div class="md:w-1/2" data-aos="fade-right" data-aos-duration="1000">
           <img
             src="./media/photoIMG.jpg"
             alt="IMG Portrait" class="rounded-lg shadow-lg w-full max-w-sm md:max-w-md mx-auto hover:shadow-2xl transition-shadow duration-500">
@@ -219,11 +218,12 @@
 
   <!-- Footer -->
   <footer class="bg-primary text-accent py-10">
-    <div class="container mx-auto px-4">
-      <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">        <div class="mb-6 md:mb-0" data-aos="fade-right" data-aos-offset="0">
+    <div class="container mx-auto px-4">      <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+        <div class="mb-6 md:mb-0" data-aos="fade-right" data-aos-offset="0">
           <a href="#top" class="text-2xl sm:text-3xl font-anton text-accent mb-2 sm:mb-4 inline-block hover:scale-102 origin-left transition-transform duration-300 tracking-wider uppercase">cutsbyimg</a>
           <p class="text-accent text-sm sm:text-base">L'art de la coupe sur mesure</p>
-        </div><div class="flex space-x-6" data-aos="fade-left" data-aos-offset="0">
+        </div>
+        <div class="flex space-x-6" data-aos="fade-left" data-aos-offset="0">
           <a href="https://www.instagram.com/cutsbyimg?igsh=MTc4azA5MjB5c2Z0aQ%3D%3D&utm_source=qr" target="_blank" class="text-accent transition-all duration-300 hover:scale-110">
             <div class="w-10 h-10 flex items-center justify-center">
               <i class="ri-instagram-line text-xl"></i>
@@ -251,9 +251,18 @@
     </div>
   </footer>
 
-  <!-- Scripts -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="js/main.js"></script>
+  <!-- Scripts -->  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // Initialisation de la bibliothèque AOS pour les animations au scroll
+    document.addEventListener('DOMContentLoaded', function() {
+      AOS.init({
+        duration: 800,
+        once: false,
+        mirror: true
+      });
+    });
+  </script>
+  <script src="./js/main.js"></script>
   <!-- Ajoutez ce script avant la fermeture du body -->
   <script>
     // Fonction pour mettre à jour la navigation active selon la section visible
