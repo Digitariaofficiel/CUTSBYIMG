@@ -260,6 +260,42 @@
         once: false,
         mirror: true
       });
+      
+      // Code pour le menu burger
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+        if (mobileMenuBtn && mobileMenu) {
+        // Utiliser touchstart et click pour assurer la compatibilité sur tous les appareils
+        ['click', 'touchstart'].forEach(event => {
+          mobileMenuBtn.addEventListener(event, function(e) {
+            // Empêcher le comportement par défaut pour éviter les doubles déclenchements
+            e.preventDefault();
+            
+            // Toggle la classe active sur le bouton burger
+            this.classList.toggle('active');
+            
+            // Toggle l'affichage du menu mobile
+            if (mobileMenu.classList.contains('hidden')) {
+              mobileMenu.classList.remove('hidden');
+              mobileMenu.classList.add('open');
+            } else {
+              mobileMenu.classList.add('hidden');
+              mobileMenu.classList.remove('open');
+            }
+          }, { passive: false }); // passive: false permet d'utiliser preventDefault
+        });
+          // Fermer le menu quand on clique sur un lien
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+          ['click', 'touchend'].forEach(event => {
+            link.addEventListener(event, (e) => {
+              mobileMenu.classList.add('hidden');
+              mobileMenu.classList.remove('open');
+              mobileMenuBtn.classList.remove('active');
+            });
+          });
+        });
+      }
     });
   </script>
   <script src="./js/main.js"></script>
