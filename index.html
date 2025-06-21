@@ -12,18 +12,19 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
     rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com/3.4.16"></script>  <link rel="stylesheet" href="./styles.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">  <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./stylesReservation.css">
   <script>
     tailwind.config = {
       theme: {
         extend: {
-          colors: { 
-            primary: '#1F1F1F', 
+          colors: {
+            primary: '#1F1F1F',
             secondary: '#0D47A1', /* Bleu plus foncé qui remplace #1565C0 */
             dark: '#808080', /* Légèrement plus foncé que l'original #919191 */
             medium: '#808080',
-            accent: '#FDF4E3' 
+            accent: '#FDF4E3'
           },
           borderRadius: { 'none': '0px', 'sm': '4px', DEFAULT: '8px', 'md': '12px', 'lg': '16px', 'xl': '20px', '2xl': '24px', '3xl': '32px', 'full': '9999px', 'button': '8px' },
           fontFamily: {
@@ -33,215 +34,232 @@
       }
     }
   </script>
-  
+
 </head>
 
 <body id="top" class="bg-primary text-accent">
-  <!-- Header -->
-  <header class="fixed w-full z-50 bg-dark bg-opacity-95 shadow-sm">
-    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-      <a href="#top" class="text-3xl font-anton text-accent hover:scale-105 transition-transform duration-300 tracking-wider uppercase">cutsbyimg</a>
-      <!-- Navigation modifiée pour supprimer le background color -->
-      <nav class="hidden md:flex space-x-8">
-        <a href="#services" class="nav-link text-accent font-anton whitespace-nowrap" id="servicesLink">
-          SERVICES
-        </a>
-        <a href="#about" class="nav-link text-accent font-anton whitespace-nowrap" id="aboutLink">
-          À PROPOS
-        </a>
-      </nav>
-      <a href="#services"
-        class="bg-secondary text-accent px-6 py-2 !rounded-button font-anton hover:bg-opacity-90 transition duration-300 hover:scale-105 whitespace-nowrap">RÉSERVER</a>
-      <button class="md:hidden burger-btn w-10 h-10 flex flex-col justify-center items-center" id="mobileMenuBtn" aria-label="Menu">
-        <span class="burger-line"></span>
-        <span class="burger-line"></span>
-        <span class="burger-line"></span>
-      </button>
-    </div>    <!-- Mobile Menu -->
-    <div id="mobileMenu" class="hidden md:hidden bg-dark w-full py-4 absolute top-full left-0 shadow-md">
-      <div class="container mx-auto px-4 flex flex-col space-y-4">
-        <a href="#services" class="mobile-menu-link text-accent font-anton text-lg py-2 transition-transform">SERVICES</a>
-        <a href="#about" class="mobile-menu-link text-accent font-anton text-lg py-2 transition-transform">À PROPOS</a>
-      </div>
-    </div>
-  </header>
-
-  <!-- Hero Section with Video Background -->
-  <section class="video-container">
-    <div class="video-overlay"></div>    <video autoplay muted loop playsinline class="absolute object-cover w-full h-full">
-      <source
-        src="https://readdy.ai/api/search-image?query=professional%2520male%2520hairdresser%2520cutting%2520client%2520hair%2520in%2520modern%2520barbershop%252C%2520focus%2520on%2520hands%2520with%2520scissors%252C%2520stylish%2520interior%2520with%2520warm%2520lighting%252C%2520cinematic%2520quality%252C%2520shallow%2520depth%2520of%2520field&width=1920&height=1080&seq=1&orientation=landscape"
-        type="video/mp4">
-      Votre navigateur ne prend pas en charge la vidéo.
-    </video>
-    <div class="video-content h-full flex items-center">
-      <div class="container mx-auto px-4 pt-24">
-        <div class="max-w-2xl px-4">
-          <h1 class="font-anton text-accent mb-8 md:mb-10 hero-title">IMG</h1>
+  <!-- Header -->  <div class="spa" style="opacity: 1; transition: opacity 0.3s ease;">
+    <div id="main-content">
+    <header class="fixed w-full z-50 bg-dark bg-opacity-95 shadow-sm">
+      <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+        <a href="#top"
+          class="text-3xl font-anton text-accent hover:scale-105 transition-transform duration-300 tracking-wider uppercase">cutsbyimg</a>
+        <!-- Navigation modifiée pour supprimer le background color -->
+        <nav class="hidden md:flex space-x-8">
+          <a href="#services" class="nav-link text-accent font-anton whitespace-nowrap" id="servicesLink">
+            SERVICES
+          </a>
+          <a href="#about" class="nav-link text-accent font-anton whitespace-nowrap" id="aboutLink">
+            À PROPOS
+          </a>
+        </nav>
+        <a href="#services"
+          class="bg-secondary text-accent px-6 py-2 !rounded-button font-anton hover:bg-opacity-90 transition duration-300 hover:scale-105 whitespace-nowrap">RÉSERVER</a>
+        <button class="md:hidden burger-btn w-10 h-10 flex flex-col justify-center items-center" id="mobileMenuBtn"
+          aria-label="Menu">
+          <span class="burger-line"></span>
+          <span class="burger-line"></span>
+          <span class="burger-line"></span>
+        </button>
+      </div> <!-- Mobile Menu -->
+      <div id="mobileMenu" class="hidden md:hidden bg-dark w-full py-4 absolute top-full left-0 shadow-md">
+        <div class="container mx-auto px-4 flex flex-col space-y-4">
           <a href="#services"
-             class="bg-secondary text-accent px-8 py-3 !rounded-button font-anton text-lg hover:bg-opacity-80 transition inline-block whitespace-nowrap hero-button">RÉSERVER MAINTENANT</a>
+            class="mobile-menu-link text-accent font-anton text-lg py-2 transition-transform">SERVICES</a>
+          <a href="#about" class="mobile-menu-link text-accent font-anton text-lg py-2 transition-transform">À
+            PROPOS</a>
         </div>
       </div>
-    </div>
-  </section>
+    </header>
 
+    <!-- Hero Section with Video Background -->
+    <section class="video-container">
+      <div class="video-overlay"></div> <video autoplay muted loop playsinline
+        class="absolute object-cover w-full h-full">
+        <source
+          src="https://readdy.ai/api/search-image?query=professional%2520male%2520hairdresser%2520cutting%2520client%2520hair%2520in%2520modern%2520barbershop%252C%2520focus%2520on%2520hands%2520with%2520scissors%252C%2520stylish%2520interior%2520with%2520warm%2520lighting%252C%2520cinematic%2520quality%252C%2520shallow%2520depth%2520of%2520field&width=1920&height=1080&seq=1&orientation=landscape"
+          type="video/mp4">
+        Votre navigateur ne prend pas en charge la vidéo.
+      </video>
+      <div class="video-content h-full flex items-center">
+        <div class="container mx-auto px-4 pt-24">
+          <div class="max-w-2xl px-4">
+            <h1 class="font-anton text-accent mb-8 md:mb-10 hero-title">IMG</h1>
+            <a href="#services"
+              class="bg-secondary text-accent px-8 py-3 !rounded-button font-anton text-lg hover:bg-opacity-80 transition inline-block whitespace-nowrap hero-button">RÉSERVER
+              MAINTENANT</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="services" class="py-20 bg-primary text-accent">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-anton text-center mb-4 text-accent" data-aos="fade-up">NOS SERVICES</h2>
+        <p class="text-accent text-center mb-12 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200">Des
+          prestations sur mesure pour tous les styles et
+          toutes les envies</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto"> <!-- Service 1 - Moins de 20 ans -->
+          <div class="service-item group" data-aos="fade-up" data-aos-delay="300">
+            <div class="flex flex-col h-full">
+              <div class="flex justify-between items-center mb-2">
+                <h3 class="text-2xl font-anton text-accent">-20 ANS</h3>
+                <div class="flex items-center gap-4">
+                  <span class="text-accent text-lg duration">35 min</span>
+                  <span class="text-2xl font-anton price">20 CHF</span>
+                </div>
+              </div>
+              <div class="flex-grow"></div>
+              <div class="flex justify-end mt-6">                <a href="#moins20"
+                  class="inline-block px-8 py-2 bg-secondary text-accent rounded-button font-anton transition-transform hover:scale-105 duration-300 book-btn">RÉSERVER</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Service 2 - Moins de 20 ans et barbe -->
+          <div class="service-item group" data-aos="fade-up" data-aos-delay="400">
+            <div class="flex flex-col h-full">
+              <div class="flex justify-between items-center mb-2">
+                <h3 class="text-2xl font-anton text-accent">-20 ANS ET BARBE</h3>
+                <div class="flex items-center gap-4">
+                  <span class="text-accent text-lg duration">50 min</span>
+                  <span class="text-2xl font-anton price">25 CHF</span>
+                </div>
+              </div>
+              <div class="flex-grow"></div>
+              <div class="flex justify-end mt-6">                <a href="#moins20Barbe"
+                  class="inline-block px-8 py-2 bg-secondary text-accent rounded-button font-anton transition-transform hover:scale-105 duration-300 book-btn">RÉSERVER</a>
+              </div>
+            </div>
+          </div>
+          <!-- Service 3 - Plus de 20 ans -->
+          <div class="service-item group" data-aos="fade-up" data-aos-delay="500">
+            <div class="flex flex-col h-full">
+              <div class="flex justify-between items-center mb-2">
+                <h3 class="text-2xl font-anton text-accent">+20 ANS</h3>
+                <div class="flex items-center gap-4">
+                  <span class="text-accent text-lg duration">35 min</span>
+                  <span class="text-2xl font-anton price">25 CHF</span>
+                </div>
+              </div>
+              <div class="flex-grow"></div>
+              <div class="flex justify-end mt-6">                <a href="#plus20"
+                  class="inline-block px-8 py-2 bg-secondary text-accent rounded-button font-anton transition-transform hover:scale-105 duration-300 book-btn">RÉSERVER</a>
+              </div>
+            </div>
+          </div>
+          <!-- Service 4 - Plus de 20 ans et barbe -->
+          <div class="service-item group" data-aos="fade-up" data-aos-delay="600">
+            <div class="flex flex-col h-full">
+              <div class="flex justify-between items-center mb-2">
+                <h3 class="text-2xl font-anton text-accent">+20 ANS ET BARBE</h3>
+                <div class="flex items-center gap-4">
+                  <span class="text-accent text-lg duration">50 min</span>
+                  <span class="text-2xl font-anton price">30 CHF</span>
+                </div>
+              </div>
+              <div class="flex-grow"></div>
+              <div class="flex justify-end mt-6">                <a href="#plus20Barbe"
+                  class="inline-block px-8 py-2 bg-secondary text-accent rounded-button font-anton transition-transform hover:scale-105 duration-300 book-btn">RÉSERVER</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-primary text-accent">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+          <div class="md:w-1/2" data-aos="fade-right" data-aos-duration="1000">
+            <img src="./media/photoIMG.jpg" alt="IMG Portrait"
+              class="rounded-lg shadow-lg w-full max-w-sm md:max-w-md mx-auto hover:shadow-2xl transition-shadow duration-500">
+          </div>
+          <div class="md:w-1/2" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+            <h2 class="text-3xl md:text-4xl font-anton mb-6 text-accent">À PROPOS DE MOI</h2>
+            <p class="text-accent mb-6">Passionné par l'art de la coiffure depuis plus de 10 ans, je crée des
+              styles qui reflètent la personnalité unique de chaque client.</p>
+            <p class="text-accent mb-8">Ma philosophie : une coupe parfaite doit être aussi belle à
+              entretenir au quotidien.</p>
+
+            <!-- Section MES RÉSEAUX centrée -->
+            <h3 class="font-anton text-lg mb-6 text-accent text-center">MES RÉSEAUX</h3>
+            <div class="social-badges-container" data-aos="fade-up" data-aos-delay="300"> <a
+                href="https://www.tiktok.com/@cutsbyimg?_t=ZN-8xMm7YTGTO2&_r=1" target="_blank"
+                class="social-badge border-accent">
+                <div class="icon-container">
+                  <i class="ri-tiktok-line"></i>
+                </div>
+                <div class="badge-content">
+                  <p class="badge-title text-accent">TIKTOK</p>
+                  <p class="badge-subtitle text-accent">@cutsbyimg</p>
+                </div>
+              </a>
+              <a href="https://www.instagram.com/cutsbyimg?igsh=MTc4azA5MjB5c2Z0aQ%3D%3D&utm_source=qr" target="_blank"
+                class="social-badge border-accent">
+                <div class="icon-container">
+                  <i class="ri-instagram-line"></i>
+                </div>
+                <div class="badge-content">
+                  <p class="badge-title text-accent">INSTAGRAM</p>
+                  <p class="badge-subtitle text-accent">@cutsbyimg</p>
+                </div>
+              </a>
+              <a href="https://youtube.com/@cutsbyimg?si=rdrfEHaR75wjlS4L" target="_blank"
+                class="social-badge border-accent">
+                <div class="icon-container">
+                  <i class="ri-youtube-line"></i>
+                </div>
+                <div class="badge-content">
+                  <p class="badge-title text-accent">YOUTUBE</p>
+                  <p class="badge-subtitle text-accent">@cutsbyimg</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>    </section>
+    </div>
+  </div>
   <!-- Services Section - Version grille 2x2 identique à la photo -->
-  <section id="services" class="py-20 bg-primary text-accent">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl md:text-4xl font-anton text-center mb-4 text-accent" data-aos="fade-up">NOS SERVICES</h2>
-      <p class="text-accent text-center mb-12 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200">Des prestations sur mesure pour tous les styles et
-        toutes les envies</p>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-        <!-- Service 1 - Moins de 20 ans -->
-        <div class="service-item" data-aos="fade-up" data-aos-delay="300">
-          <div class="flex flex-col h-full">
-            <div class="flex justify-between items-center mb-2">
-              <h3 class="text-2xl font-anton text-accent">-20 ANS</h3>
-              <div class="flex items-center gap-4">
-                <span class="text-accent text-lg duration">35 min</span>
-                <span class="text-2xl font-anton price">20 CHF</span>
-              </div>
-            </div>
-            <div class="flex-grow"></div>
-            <div class="flex justify-end mt-6">
-              <a href="reservation-moins-20-ans.html" class="inline-block px-8 py-2 bg-secondary text-accent rounded-button font-anton transition-transform hover:scale-105 duration-300">RÉSERVER</a>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Service 2 - Moins de 20 ans et barbe -->
-        <div class="service-item" data-aos="fade-up" data-aos-delay="400">
-          <div class="flex flex-col h-full">
-            <div class="flex justify-between items-center mb-2">
-              <h3 class="text-2xl font-anton text-accent">-20 ANS ET BARBE</h3>
-              <div class="flex items-center gap-4">
-                <span class="text-accent text-lg duration">50 min</span>
-                <span class="text-2xl font-anton price">25 CHF</span>
-              </div>
-            </div>
-            <div class="flex-grow"></div>
-            <div class="flex justify-end mt-6">
-              <a href="reservation-moins-20-ans-barbe.html" class="inline-block px-8 py-2 bg-secondary text-accent rounded-button font-anton transition-transform hover:scale-105 duration-300">RÉSERVER</a>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Service 3 - Plus de 20 ans -->
-        <div class="service-item" data-aos="fade-up" data-aos-delay="500">
-          <div class="flex flex-col h-full">
-            <div class="flex justify-between items-center mb-2">
-              <h3 class="text-2xl font-anton text-accent">+20 ANS</h3>
-              <div class="flex items-center gap-4">
-                <span class="text-accent text-lg duration">35 min</span>
-                <span class="text-2xl font-anton price">25 CHF</span>
-              </div>
-            </div>
-            <div class="flex-grow"></div>
-            <div class="flex justify-end mt-6">
-              <a href="reservation-plus-20-ans.html" class="inline-block px-8 py-2 bg-secondary text-accent rounded-button font-anton transition-transform hover:scale-105 duration-300">RÉSERVER</a>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Service 4 - Plus de 20 ans et barbe -->
-        <div class="service-item" data-aos="fade-up" data-aos-delay="600">
-          <div class="flex flex-col h-full">
-            <div class="flex justify-between items-center mb-2">
-              <h3 class="text-2xl font-anton text-accent">+20 ANS ET BARBE</h3>
-              <div class="flex items-center gap-4">
-                <span class="text-accent text-lg duration">50 min</span>
-                <span class="text-2xl font-anton price">30 CHF</span>
-              </div>
-            </div>
-            <div class="flex-grow"></div>
-            <div class="flex justify-end mt-6">
-              <a href="reservation-plus-20-ans-barbe.html" class="inline-block px-8 py-2 bg-secondary text-accent rounded-button font-anton transition-transform hover:scale-105 duration-300">RÉSERVER</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- About Section -->
-  <section id="about" class="py-20 bg-primary text-accent">
-    <div class="container mx-auto px-4">
-      <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
-        <div class="md:w-1/2" data-aos="fade-right" data-aos-duration="1000">
-          <img
-            src="./media/photoIMG.jpg"
-            alt="IMG Portrait" class="rounded-lg shadow-lg w-full max-w-sm md:max-w-md mx-auto hover:shadow-2xl transition-shadow duration-500">
-        </div>
-        <div class="md:w-1/2" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
-          <h2 class="text-3xl md:text-4xl font-anton mb-6 text-accent">À PROPOS DE MOI</h2>
-          <p class="text-accent mb-6">Passionné par l'art de la coiffure depuis plus de 10 ans, je crée des
-            styles qui reflètent la personnalité unique de chaque client.</p>
-          <p class="text-accent mb-8">Ma philosophie : une coupe parfaite doit être aussi belle à
-            entretenir au quotidien.</p>
-            
-          <!-- Section MES RÉSEAUX centrée -->
-          <h3 class="font-anton text-lg mb-6 text-accent text-center">MES RÉSEAUX</h3>
-          <div class="social-badges-container" data-aos="fade-up" data-aos-delay="300">            <a href="https://www.tiktok.com/@cutsbyimg?_t=ZN-8xMm7YTGTO2&_r=1" target="_blank" class="social-badge border-accent">
-              <div class="icon-container">
-                <i class="ri-tiktok-line"></i>
-              </div>
-              <div class="badge-content">
-                <p class="badge-title text-accent">TIKTOK</p>
-                <p class="badge-subtitle text-accent">@cutsbyimg</p>
-              </div>
-            </a>
-            <a href="https://www.instagram.com/cutsbyimg?igsh=MTc4azA5MjB5c2Z0aQ%3D%3D&utm_source=qr" target="_blank" class="social-badge border-accent">
-              <div class="icon-container">
-                <i class="ri-instagram-line"></i>
-              </div>
-              <div class="badge-content">
-                <p class="badge-title text-accent">INSTAGRAM</p>
-                <p class="badge-subtitle text-accent">@cutsbyimg</p>
-              </div>
-            </a>
-            <a href="https://youtube.com/@cutsbyimg?si=rdrfEHaR75wjlS4L" target="_blank" class="social-badge border-accent">
-              <div class="icon-container">
-                <i class="ri-youtube-line"></i>
-              </div>
-              <div class="badge-content">
-                <p class="badge-title text-accent">YOUTUBE</p>
-                <p class="badge-subtitle text-accent">@cutsbyimg</p>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- Footer -->
-  <footer class="bg-primary text-accent py-10">
-    <div class="container mx-auto px-4">      <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+  <footer class="footer-background text-accent py-10">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
         <div class="mb-6 md:mb-0" data-aos="fade-right" data-aos-offset="0">
-          <a href="#top" class="text-2xl sm:text-3xl font-anton text-accent mb-2 sm:mb-4 inline-block hover:scale-102 origin-left transition-transform duration-300 tracking-wider uppercase">cutsbyimg</a>
+          <a href="#top"
+            class="text-2xl sm:text-3xl font-anton text-accent mb-2 sm:mb-4 inline-block hover:scale-102 origin-left transition-transform duration-300 tracking-wider uppercase">cutsbyimg</a>
           <p class="text-accent text-sm sm:text-base">L'art de la coupe sur mesure</p>
         </div>
         <div class="flex space-x-6" data-aos="fade-left" data-aos-offset="0">
-          <a href="https://www.instagram.com/cutsbyimg?igsh=MTc4azA5MjB5c2Z0aQ%3D%3D&utm_source=qr" target="_blank" class="text-accent transition-all duration-300 hover:scale-110">
+          <a href="https://www.instagram.com/cutsbyimg?igsh=MTc4azA5MjB5c2Z0aQ%3D%3D&utm_source=qr" target="_blank"
+            class="text-accent transition-all duration-300 hover:scale-110">
             <div class="w-10 h-10 flex items-center justify-center">
               <i class="ri-instagram-line text-xl"></i>
             </div>
           </a>
-          <a href="https://www.tiktok.com/@cutsbyimg?_t=ZN-8xMm7YTGTO2&_r=1" target="_blank" class="text-accent transition-all duration-300 hover:scale-110">
+          <a href="https://www.tiktok.com/@cutsbyimg?_t=ZN-8xMm7YTGTO2&_r=1" target="_blank"
+            class="text-accent transition-all duration-300 hover:scale-110">
             <div class="w-10 h-10 flex items-center justify-center">
               <i class="ri-tiktok-line text-xl"></i>
             </div>
           </a>
-          <a href="https://youtube.com/@cutsbyimg?si=rdrfEHaR75wjlS4L" target="_blank" class="text-accent transition-all duration-300 hover:scale-110">
+          <a href="https://youtube.com/@cutsbyimg?si=rdrfEHaR75wjlS4L" target="_blank"
+            class="text-accent transition-all duration-300 hover:scale-110">
             <div class="w-10 h-10 flex items-center justify-center">
               <i class="ri-youtube-line text-xl"></i>
             </div>
           </a>
         </div>
-      </div>      <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+      </div>
+      <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
         <p class="text-sm text-accent mb-4 md:mb-0">© 2025 CutsbyIMG. Tous droits réservés.</p>
-        <p class="text-sm text-accent font-medium tracking-wide my-4 md:my-0">Designed by <a href="https://digitaria.ch" target="_blank" class="text-secondary hover:opacity-80 transition-opacity">Digitaria</a></p>
+        <p class="text-sm text-accent font-medium tracking-wide my-4 md:my-0">Designed by <a href="https://digitaria.ch"
+            target="_blank" class="text-secondary hover:opacity-80 transition-opacity">Digitaria</a></p>
         <div class="flex space-x-6 text-sm">
           <a href="#" class="text-accent transition-transform duration-300">Mentions légales</a>
           <a href="#" class="text-accent transition-transform duration-300">Politique de confidentialité</a>
@@ -250,9 +268,11 @@
     </div>
   </footer>
 
-  <!-- Scripts -->  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>  <script>
+  <!-- Scripts -->  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="./js/app.js" defer></script>
+  <script>
     // Initialisation de la bibliothèque AOS pour les animations au scroll
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       AOS.init({
         duration: 800,
         once: false,
@@ -262,17 +282,17 @@
       // Code pour le menu burger
       const mobileMenuBtn = document.getElementById('mobileMenuBtn');
       const mobileMenu = document.getElementById('mobileMenu');
-      
+
       if (mobileMenuBtn && mobileMenu) {
         // Utiliser le click pour fonctionner sur mobile
-        mobileMenuBtn.addEventListener('click', function(e) {
+        mobileMenuBtn.addEventListener('click', function (e) {
           // Empêcher le comportement par défaut
           e.preventDefault();
           e.stopPropagation();
-          
+
           // Toggle la classe active sur le bouton burger
           this.classList.toggle('active');
-          
+
           // Toggle l'affichage du menu mobile
           if (mobileMenu.classList.contains('hidden')) {
             mobileMenu.classList.remove('hidden');
@@ -282,13 +302,13 @@
             mobileMenu.classList.remove('open');
           }
         });
-        
+
         // Gérer les clics sur les liens du menu
         const mobileLinks = mobileMenu.querySelectorAll('a');
-        mobileLinks.forEach(function(link) {
-          link.addEventListener('click', function() {
+        mobileLinks.forEach(function (link) {
+          link.addEventListener('click', function () {
             // Fermer le menu après un petit délai pour laisser le temps au navigateur de traiter le clic
-            setTimeout(function() {
+            setTimeout(function () {
               mobileMenu.classList.add('hidden');
               mobileMenu.classList.remove('open');
               mobileMenuBtn.classList.remove('active');
@@ -307,30 +327,30 @@
       const aboutSection = document.getElementById('about');
       const servicesLink = document.getElementById('servicesLink');
       const aboutLink = document.getElementById('aboutLink');
-      
+
       const scrollPosition = window.scrollY + 100; // Ajustement pour le header
-      
+
       // Retirer toutes les classes actives d'abord
       servicesLink.classList.remove('active');
       servicesLink.classList.remove('active-services');
       aboutLink.classList.remove('active');
-      
+
       // Déterminer quelle section est visible
-      if (aboutSection.offsetTop <= scrollPosition && 
-          aboutSection.offsetTop + aboutSection.offsetHeight > scrollPosition) {
+      if (aboutSection.offsetTop <= scrollPosition &&
+        aboutSection.offsetTop + aboutSection.offsetHeight > scrollPosition) {
         aboutLink.classList.add('active');
-      } else if (servicesSection.offsetTop <= scrollPosition && 
-                 servicesSection.offsetTop + servicesSection.offsetHeight > scrollPosition) {
+      } else if (servicesSection.offsetTop <= scrollPosition &&
+        servicesSection.offsetTop + servicesSection.offsetHeight > scrollPosition) {
         servicesLink.classList.add('active');
       }
     }
-    
+
     // Mettre à jour au chargement de la page et au défilement
     window.addEventListener('load', updateActiveNav);
     window.addEventListener('scroll', updateActiveNav);
-    
+
     // Vérifier la section active dès le chargement
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       // Attribuer la classe active en fonction du hash dans l'URL
       if (window.location.hash === '#services') {
         document.getElementById('servicesLink').classList.add('active');
@@ -341,28 +361,34 @@
         updateActiveNav();
       }
     });
-  </script>
-  <script>
+  </script>  <script>
     // Amélioration de la navigation par ancres
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        
-        if (targetId !== "#") {
-          const targetElement = document.querySelector(targetId);
-          if (targetElement) {
-            // Ajustement pour le header fixe
-            const headerOffset = 80;
-            const elementPosition = targetElement.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-            
-            window.scrollTo({
-              top: offsetPosition,
-              behavior: 'smooth'
-            });
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          const targetId = this.getAttribute('href');
+          
+          // Ne pas prévenir le comportement par défaut pour les liens SPA
+          if (['#moins20', '#moins20Barbe', '#plus20', '#plus20Barbe'].includes(targetId)) {
+            return; // Laisser le gestionnaire de hash prendre le relais
           }
-        }
+          
+          e.preventDefault();
+          if (targetId !== "#") {
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              // Ajustement pour le header fixe
+              const headerOffset = 80;
+              const elementPosition = targetElement.getBoundingClientRect().top;
+              const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+              window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+              });
+            }
+          }
+        });
       });
     });
   </script>

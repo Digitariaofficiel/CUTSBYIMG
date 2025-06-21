@@ -4,6 +4,34 @@
         padding-right: 16px;
       }
     }
+    
+/* Styles pour le loader SPA */
+.spa-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(31, 31, 31, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #0D47A1;
+  animation: spin 1s infinite ease-in-out;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 
     .hide-scrollbar::-webkit-scrollbar {
       display: none;
@@ -307,13 +335,15 @@
 
     /* Correction du background dans le nav - remettre comme avant */
 header {
-  background-color: #808080 !important; /* Comme avant (#808080 = dark) */
+  background-color: rgba(128, 128, 128, 0.95) !important; /* Semi-transparent */
   color: #FDF4E3;
+  backdrop-filter: blur(5px);
 }
 
 /* Mobile Menu background également */
 #mobileMenu {
-  background-color: #808080 !important;
+  background-color: rgba(128, 128, 128, 0.95) !important;
+  backdrop-filter: blur(5px);
 }
 
 /* Style pour les liens de navigation */
@@ -647,12 +677,102 @@ header .container > a[href="#services"]:hover {
   background-color: var(--blue-medium) !important;
 }
 
-/* Couleur de fond du footer identique à celle du nav */
-footer {
-  background-color: #808080 !important; /* Même couleur que le header */
+/* Couleur de fond du footer */
+.footer-background {
+  background-color: #101722; /* Un bleu-gris très foncé qui contraste avec le fond principal */
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(13, 71, 161, 0.3); /* Une bordure plus visible avec la couleur des boutons */
+  box-shadow: 0 -8px 16px rgba(0, 0, 0, 0.15); /* Ombre subtile pour séparer visuellement le footer */
+}
+
+/* Un effet de dégradé subtil pour ajouter de la profondeur */
+.footer-background::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, rgba(13, 71, 161, 0.1), rgba(13, 71, 161, 0.3), rgba(13, 71, 161, 0.1));
+}
+
+/* Ajuster les éléments du footer pour une meilleure visibilité sur ce fond */
+footer .text-accent {
+  color: #FDF4E3 !important; /* S'assurer que le texte est bien visible */
 }
 
 /* Ajuster la couleur de la bordure du footer pour qu'elle soit visible */
 footer .border-t {
-  border-color: rgba(255, 255, 255, 0.1) !important; /* Bordure légèrement visible sur le fond gris */
+  border-color: rgba(255, 255, 255, 0.08) !important; /* Bordure légèrement visible */
+}
+
+/* Amélioration des effets hover pour les cartes services */
+.service-item {
+  position: relative;
+  overflow: hidden;
+  transform: translateY(0);
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+              box-shadow 0.5s ease,
+              background-color 0.4s ease;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  background-color: transparent; /* Reset background to transparent */
+}
+
+.service-item::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(to right, var(--blue-medium), #1976D2);
+  transition: width 0.6s ease;
+  z-index: 1;
+}
+
+.service-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  background-color: rgba(31, 31, 31, 0.3); /* Lighter background */
+}
+
+.service-item:hover::before {
+  width: 100%;
+}
+
+.service-item:hover h3 {
+  transform: translateY(-5px);
+  color: var(--blue-medium);
+}
+
+.service-item h3,
+.service-item .price {
+  transition: transform 0.4s ease, color 0.4s ease;
+}
+
+.service-item:hover .price {
+  transform: translateY(-5px);
+}
+
+/* Animation du bouton dans les cartes de service */
+.service-item a.bg-secondary {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.service-item a.bg-secondary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  transition: left 0.5s ease;
+}
+
+.service-item:hover a.bg-secondary::before {
+  left: 100%;
 }
