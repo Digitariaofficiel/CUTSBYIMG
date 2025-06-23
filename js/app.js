@@ -178,6 +178,32 @@ async function navigue() {
  * Initialise les événements pour les pages de réservation
  */
 function initializeReservationEvents() {
+    // Détection iOS (iPhone, iPad, iPod)
+    function isIOS() {
+        return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    }
+    
+    // Redirection en fonction du hash actuel si iOS est détecté
+    if (isIOS()) {
+        const hash = location.hash.slice(1);
+        let calUrl = "";
+        
+        if (hash === "moins20Barbe") {
+            calUrl = "https://cal.com/cuts.by.img/20ansbarbe";
+        } else if (hash === "plus20Barbe") {
+            calUrl = "https://cal.com/cuts.by.img/plus20ansbarbe";
+        } else if (hash === "moins20") {
+            calUrl = "https://cal.com/cuts.by.img/20ans";
+        } else if (hash === "plus20") {
+            calUrl = "https://cal.com/cuts.by.img/plus20ans";
+        }
+        
+        if (calUrl) {
+            window.location.href = calUrl;
+            return;
+        }
+    }
+    
     // Gérer les boutons de retour dans les pages de réservation
     const backButtons = document.querySelectorAll('.back-button');
     if (backButtons.length > 0) {

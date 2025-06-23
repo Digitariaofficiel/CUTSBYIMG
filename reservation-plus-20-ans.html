@@ -115,9 +115,21 @@
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
+      // Détection iOS (iPhone, iPad, iPod)
+      function isIOS() {
+        return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+      }
+      
+      // Rediriger si l'utilisateur est sur iOS
+      if (isIOS()) {
+        window.location.href = "https://cal.com/cuts.by.img/plus20ans";
+      }
+      
       // Redimensionner l'iframe en fonction de la taille de l'écran
       const resizeIframe = () => {
         const iframe = document.querySelector('.reservation-iframe');
+        if (!iframe) return;
+        
         const width = window.innerWidth;
         
         if (width <= 640) {
