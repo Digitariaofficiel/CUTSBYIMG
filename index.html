@@ -100,7 +100,7 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto"> 
           <!-- Service 1 - Coupe étudiant -->
-          <div class="service-item group" data-aos="fade-up" data-aos-delay="300">
+          <div class="service-item group" data-aos="fade-up" data-aos-delay="100">
             <div class="flex flex-col h-full">
               <div class="flex justify-between items-center mb-2">
                 <h3 class="text-2xl font-anton text-accent">COUPE ÉTUDIANT</h3>
@@ -118,7 +118,7 @@
           </div>
 
           <!-- Service 2 - Coupe -->
-          <div class="service-item group" data-aos="fade-up" data-aos-delay="400">
+          <div class="service-item group" data-aos="fade-up" data-aos-delay="150">
             <div class="flex flex-col h-full">
               <div class="flex justify-between items-center mb-2">
                 <h3 class="text-2xl font-anton text-accent">COUPE</h3>
@@ -136,7 +136,7 @@
           </div>
           
           <!-- Service 3 - Coupe transformation -->
-          <div class="service-item group" data-aos="fade-up" data-aos-delay="500">
+          <div class="service-item group" data-aos="fade-up" data-aos-delay="200">
             <div class="flex flex-col h-full">
               <div class="flex justify-between items-center mb-2">
                 <h3 class="text-2xl font-anton text-accent">COUPE TRANSFORMATION</h3>
@@ -155,7 +155,7 @@
           </div>
           
           <!-- Service 4 - Coupe + barbe -->
-          <div class="service-item group" data-aos="fade-up" data-aos-delay="600">
+          <div class="service-item group" data-aos="fade-up" data-aos-delay="250">
             <div class="flex flex-col h-full">
               <div class="flex justify-between items-center mb-2">
                 <h3 class="text-2xl font-anton text-accent">COUPE + BARBE</h3>
@@ -281,9 +281,9 @@
     // Initialisation de la bibliothèque AOS pour les animations au scroll
     document.addEventListener('DOMContentLoaded', function () {
       AOS.init({
-        duration: 800,
-        once: false,
-        mirror: true
+        duration: 600, // Réduit de 800 à 600 ms
+        once: true,    // Garantit que l'animation ne se joue qu'une seule fois
+        mirror: false  // Désactivation du miroir pour éviter les animations supplémentaires
       });
 
       // Code pour le menu burger
