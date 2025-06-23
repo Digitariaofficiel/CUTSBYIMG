@@ -3,16 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Réservation - Coupe Transformation | CutsbyIMG</title>
+  <title>Mentions Légales | CutsbyIMG</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">  
   <script src="https://cdn.tailwindcss.com/3.4.16"></script>
   <link rel="stylesheet" href="./styles.css">
-  <link rel="stylesheet" href="./stylesReservation.css">
   <script>
     tailwind.config = {
       theme: {
@@ -31,45 +29,75 @@
       }
     }
   </script>
+  <style>
+    .content-section h2 {
+      color: var(--blue-medium);
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+    .content-section p {
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+    .pt-header {
+      padding-top: 7rem;
+    }
+  </style>
 </head>
 
-<body class="bg-primary text-accent page-transition">
+<body class="bg-primary text-accent">
   <!-- Header -->
   <header class="fixed w-full z-50 bg-dark bg-opacity-95 shadow-sm">
     <div class="container mx-auto px-4 py-3 flex justify-between items-center">
       <a href="index.html" class="text-3xl font-anton text-accent hover:scale-105 transition-transform duration-300 tracking-wider uppercase">cutsbyimg</a>
-      <a href="index.html" class="bg-secondary text-accent px-4 sm:px-6 py-2 !rounded-button font-anton hover:bg-opacity-90 transition back-button">
+      <a href="index.html" class="bg-secondary text-accent px-4 sm:px-6 py-2 !rounded-button font-anton hover:bg-opacity-90 transition">
         <i class="ri-arrow-left-line mr-1"></i> RETOUR
       </a>
     </div>
   </header>
 
-  <!-- Reservation Section -->
-  <section class="pt-mobile pb-20 bg-primary">
+  <!-- Legal Content -->
+  <section class="pt-header pb-20 bg-primary">
     <div class="container mx-auto px-4">
-      <div class="max-w-6xl mx-auto">
-        <div class="flex flex-col md:flex-row items-start gap-8">
-          <!-- Info box -->
-          <div class="w-full md:w-1/4 bg-dark bg-opacity-20 p-6 rounded-lg shadow-md service-info slide-in-left" data-aos="fade-right">
-            <h3 class="text-xl font-anton mb-4 text-accent">COUPE TRANSFORMATION</h3>
-            <div class="flex justify-between items-center mb-4">
-              <span class="text-3xl font-anton text-secondary">30 CHF</span>
-              <span class="text-accent opacity-80">50 min</span>
-            </div>
-            <div class="pt-4 mt-4 border-t border-gray-700">
-              <p class="text-sm text-accent opacity-80">
-                <i class="ri-information-line mr-1"></i> Pour couper une repousse de 3 mois ou plus
-              </p>
-            </div>
-          </div>
-
-          <!-- Cal.com iframe -->
-          <div class="w-full md:w-3/4 slide-in-right iframe-wrapper" data-aos="fade-left" data-aos-delay="200">
-            <h2 class="text-2xl md:text-3xl font-anton mb-6 text-accent">RÉSERVEZ VOTRE COUPE TRANSFORMATION</h2>
-            <div class="rounded-lg shadow-lg overflow-hidden iframe-container">
-              <iframe src="https://cal.com/cuts.by.img/20ansbarbe?embed=true&theme=dark" frameborder="0" class="reservation-iframe"></iframe>
-            </div>
-          </div>
+      <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl md:text-4xl font-anton mb-6 text-accent">🛡️ Mentions Légales</h1>
+        
+        <div class="content-section">
+          <h2 class="text-2xl font-anton">1. Éditeur du site</h2>
+          <p>
+            Nom du site : CUTSBYIMG<br>
+            Statut : Entreprise individuelle<br>
+            Responsable de la publication : Directeur de CUTSBYIMG<br>
+            Code postal : 1700, Fribourg<br>
+            Email de contact : mg.ivan@bluewin.ch<br>
+            Nom de domaine : https://www.cutsbyimg.ch
+          </p>
+          
+          <h2 class="text-2xl font-anton">2. Hébergeur</h2>
+          <p>
+            Nom de l'hébergeur : GitHub Pages (GitHub, Inc.)<br>
+            Adresse : 88 Colin P. Kelly Jr St, San Francisco, CA 94107, USA<br>
+            Site web : https://pages.github.com/
+          </p>
+          
+          <h2 class="text-2xl font-anton">3. Propriété intellectuelle</h2>
+          <p>L'ensemble du contenu publié sur le site CUTSBYIMG (textes, images, graphismes, logos, vidéos, etc.) est protégé par les lois suisses et internationales relatives à la propriété intellectuelle.</p>
+          <p>Sauf mention contraire, ces contenus sont la propriété exclusive de CUTSBYIMG.</p>
+          <p>Toute reproduction, distribution, ou utilisation sans autorisation préalable est interdite.</p>
+          
+          <h2 class="text-2xl font-anton">4. Données personnelles</h2>
+          <p>La collecte et le traitement des données personnelles sont réalisés dans le respect de la législation suisse en vigueur.</p>
+          <p>Pour en savoir plus, consultez notre <a href="politique-confidentialite.html" class="text-secondary hover:underline">Politique de Confidentialité</a>.</p>
+          
+          <h2 class="text-2xl font-anton">5. Responsabilité</h2>
+          <p>Le site CUTSBYIMG s'efforce de fournir des informations fiables et à jour. Toutefois, nous ne saurions garantir l'exactitude, la complétude ou l'actualité des informations proposées.</p>
+          <p>L'utilisation du site se fait sous la seule responsabilité de l'utilisateur.</p>
+          
+          <h2 class="text-2xl font-anton">6. Liens externes</h2>
+          <p>Le site peut contenir des liens vers des sites tiers. Nous ne pouvons être tenus responsables du contenu ou de la politique de confidentialité de ces sites.</p>
+          
+          <h2 class="text-2xl font-anton">7. Droit applicable</h2>
+          <p>Les présentes mentions légales sont régies par le droit suisse. En cas de litige, les tribunaux compétents seront ceux du siège de l'entreprise.</p>
         </div>
       </div>
     </div>
@@ -110,37 +138,5 @@
       </div>
     </div>
   </footer>
-
-  <!-- Scripts -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      // Redimensionner l'iframe en fonction de la taille de l'écran
-      const resizeIframe = () => {
-        const iframe = document.querySelector('.reservation-iframe');
-        const width = window.innerWidth;
-        
-        if (width <= 640) {
-          iframe.style.height = '600px';
-        } else if (width <= 768) {
-          iframe.style.height = '650px';
-        } else {
-          iframe.style.height = '750px';
-        }
-      };
-      
-      // Exécuter au chargement et lors du redimensionnement
-      resizeIframe();
-      window.addEventListener('resize', resizeIframe);
-      
-      // Initialiser AOS pour les animations au scroll
-      AOS.init({
-        duration: 800,
-        easing: 'ease-in-out',
-        once: true
-      });
-    });
-  </script>
 </body>
 </html>
-
