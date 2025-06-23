@@ -1,10 +1,44 @@
 <!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Réservation - Coupe Transformation | CutsbyIMG</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">  
+  <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./stylesReservation.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#1F1F1F',
+            secondary: '#0D47A1',
+            dark: '#808080',
+            accent: '#FDF4E3'
+          },
+          borderRadius: { 'none': '0px', 'sm': '4px', DEFAULT: '8px', 'md': '12px', 'lg': '16px', 'xl': '20px', '2xl': '24px', '3xl': '32px', 'full': '9999px', 'button': '8px' },
+          fontFamily: {
+            'anton': ['"Anton"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
 
+<body class="bg-primary text-accent page-transition">
   <!-- Header -->
   <header class="fixed w-full z-50 bg-dark bg-opacity-95 shadow-sm">
     <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-      <a href="#services" class="text-3xl font-anton text-accent hover:scale-105 transition-transform duration-300 tracking-wider uppercase">cutsbyimg</a>
-      <a href="#services" class="bg-secondary text-accent px-4 sm:px-6 py-2 !rounded-button font-anton hover:bg-opacity-90 transition back-button">
+      <a href="index.html" class="text-3xl font-anton text-accent hover:scale-105 transition-transform duration-300 tracking-wider uppercase">cutsbyimg</a>
+      <a href="index.html" class="bg-secondary text-accent px-4 sm:px-6 py-2 !rounded-button font-anton hover:bg-opacity-90 transition back-button">
         <i class="ri-arrow-left-line mr-1"></i> RETOUR
       </a>
     </div>
@@ -17,21 +51,21 @@
         <div class="flex flex-col md:flex-row items-start gap-8">
           <!-- Info box -->
           <div class="w-full md:w-1/4 bg-dark bg-opacity-20 p-6 rounded-lg shadow-md service-info slide-in-left" data-aos="fade-right">
-            <h3 class="text-xl font-anton mb-4 text-accent">-20 ANS ET BARBE</h3>
+            <h3 class="text-xl font-anton mb-4 text-accent">COUPE TRANSFORMATION</h3>
             <div class="flex justify-between items-center mb-4">
-              <span class="text-3xl font-anton text-secondary">25 CHF</span>
+              <span class="text-3xl font-anton text-secondary">30 CHF</span>
               <span class="text-accent opacity-80">50 min</span>
             </div>
             <div class="pt-4 mt-4 border-t border-gray-700">
               <p class="text-sm text-accent opacity-80">
-                <i class="ri-information-line mr-1"></i> Veuillez compléter le formulaire ci-contre pour réserver votre coupe avec taille de barbe.
+                <i class="ri-information-line mr-1"></i> Pour couper une repousse de 3 mois ou plus
               </p>
             </div>
           </div>
-          
+
           <!-- Cal.com iframe -->
           <div class="w-full md:w-3/4 slide-in-right iframe-wrapper" data-aos="fade-left" data-aos-delay="200">
-            <h2 class="text-2xl md:text-3xl font-anton mb-6 text-accent">RÉSERVEZ VOTRE COUPE -20 ANS ET BARBE</h2>
+            <h2 class="text-2xl md:text-3xl font-anton mb-6 text-accent">RÉSERVEZ VOTRE COUPE TRANSFORMATION</h2>
             <div class="rounded-lg shadow-lg overflow-hidden iframe-container">
               <iframe src="https://cal.com/cuts.by.img/20ansbarbe?embed=true&theme=dark" frameborder="0" class="reservation-iframe"></iframe>
             </div>
@@ -41,7 +75,40 @@
     </div>
   </section>
 
+  <!-- Footer -->
+  <footer class="footer-background text-accent py-8">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+        <div class="mb-4 md:mb-0">
+          <a href="index.html" class="text-2xl font-anton text-accent mb-1 inline-block hover:scale-105 transition-transform duration-300 tracking-wider uppercase">cutsbyimg</a>
+          <p class="text-accent text-sm opacity-80">L'art de la coupe sur mesure</p>
+        </div>
+        <div class="flex space-x-6">
+          <a href="https://www.instagram.com/cutsbyimg?igsh=MTc4azA5MjB5c2Z0aQ%3D%3D&utm_source=qr" target="_blank" class="text-accent hover:text-secondary transition-all duration-300 hover:scale-110">
+            <div class="w-10 h-10 flex items-center justify-center">
+              <i class="ri-instagram-line text-xl"></i>
+            </div>
+          </a>
+          <a href="https://www.tiktok.com/@cutsbyimg?_t=ZN-8xMm7YTGTO2&_r=1" target="_blank" class="text-accent hover:text-secondary transition-all duration-300 hover:scale-110">
+            <div class="w-10 h-10 flex items-center justify-center">
+              <i class="ri-tiktok-line text-xl"></i>
+            </div>
+          </a>
+          <a href="https://youtube.com/@cutsbyimg?si=rdrfEHaR75wjlS4L" target="_blank" class="text-accent hover:text-secondary transition-all duration-300 hover:scale-110">
+            <div class="w-10 h-10 flex items-center justify-center">
+              <i class="ri-youtube-line text-xl"></i>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="mt-4 border-t border-gray-700 pt-4 text-center text-sm text-accent opacity-80">
+        <p>© 2025 CutsbyIMG. Tous droits réservés.</p>
+      </div>
+    </div>
+  </footer>
+
   <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       // Redimensionner l'iframe en fonction de la taille de l'écran
@@ -61,6 +128,15 @@
       // Exécuter au chargement et lors du redimensionnement
       resizeIframe();
       window.addEventListener('resize', resizeIframe);
+      
+      // Initialiser AOS pour les animations au scroll
+      AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: true
+      });
     });
   </script>
+</body>
+</html>
 

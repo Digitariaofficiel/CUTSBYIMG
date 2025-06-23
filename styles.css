@@ -417,27 +417,26 @@ header {
   color: #FDF4E3 !important;
 }
 
-/* Nouveau système pour les réseaux sociaux dans À propos */
-/* Améliorations des animations pour les badges sociaux */
+/* Nouveau système de badges sociaux - Pastilles extensibles */
 .social-badge {
   display: flex;
   align-items: center;
   background-color: #808080;
   border-radius: 50px;
-  padding: 8px 24px 8px 8px; /* Padding fixe pour apparaître toujours déployé */
-  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.08);
-  margin-bottom: 12px; /* Réduire l'espace entre les badges */
-  width: 100%;
-  max-width: 220px; /* Largeur fixe, toujours déployé */
+  padding: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  margin-bottom: 12px;
   cursor: pointer;
   border: 1px solid rgba(255, 255, 255, 0.05);
-  transition: transform 0.3s ease; /* Uniquement transition pour l'effet de survol */
+  transition: all 0.3s ease-out; /* Transition linéaire sans effet de rebond */
+  width: 52px; /* Largeur initiale (juste l'icône + padding) */
+  overflow: hidden;
 }
 
-.social-badge:hover, .social-badge:focus {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(3, 27, 73, 0.2);
-  z-index: 30; /* Au survol, mettre au-dessus de tous les autres éléments */
+.social-badge:hover {
+  width: 180px; /* Largeur étendue au survol */
+  transform: translateY(0); /* Suppression du mouvement vertical */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 .social-badge .icon-container {
@@ -447,53 +446,91 @@ header {
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background-color: #0A2647; /* Bleu uniforme */
-  margin-right: 20px;
+  background-color: transparent; /* Suppression du fond bleu */
+  margin-right: 12px;
   flex-shrink: 0;
 }
 
 .social-badge .badge-content {
   white-space: nowrap;
-  opacity: 1; /* Toujours visible */
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: all 0.3s ease-out; /* Transition linéaire pour le texte aussi */
+  font-family: 'Anton', sans-serif;
+  letter-spacing: 0.5px;
+  color: #FDF4E3;
+}
+
+.social-badge:hover .badge-content {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .social-badges-container {
   display: flex;
-  flex-direction: column;
-  align-items: center; /* Centre les badges horizontalement */
-  margin-top: 2.5rem !important; /* Plus d'espace au-dessus des badges sociaux */
-  width: 100%; /* Assure que le conteneur prend toute la largeur */
-  z-index: 10; /* Assure que les badges sont au-dessus des autres éléments */
-  position: relative; /* Nécessaire pour que z-index fonctionne */
-  padding-top: 8px; /* Moins d'espace en haut */
-  padding-bottom: 20px; /* Moins d'espace en bas */
-}
-
-/* Réduire l'espace pour le premier élément */
-.social-badge:first-child {
-  margin-top: 10px; /* Moins d'espace pour le premier élément */
-}
-
-/* S'assurer que les badges ont un espacement uniforme */
-.social-badge + .social-badge {
-  margin-top: 0; /* Pas d'espace supplémentaire entre les badges adjacents */
-}
-
-/* Correction pour empêcher le haut du badge TikTok d'être coupé lors du survol */
-.social-badge {
-  transform-origin: center bottom; /* Déplace l'origine de transformation vers le bas */
-  margin-top: 15px; /* Espace au-dessus pour l'animation */
-  /* Assurer que l'animation ne déborde pas */
-  will-change: transform;
-  backface-visibility: hidden;
-}
-
-/* Modification de l'animation au survol pour éviter le débordement */
-.social-badge:hover, .social-badge:focus {
-  transform: scale(1.05);
-  box-shadow: 0 8px 24px rgba(3, 27, 73, 0.2);
+  flex-direction: row; /* Horizontal pour afficher en ligne */
+  justify-content: flex-start; /* Aligné à gauche au lieu de center */
+  align-items: center;
+  flex-wrap: wrap; /* Permettre le retour à la ligne sur petits écrans */
+  gap: 1rem;
+  margin-top: 1rem;
+  z-index: 10;
   position: relative;
-  z-index: 30;
+  padding: 8px 0 20px 0;
+  padding-left: 1rem; /* Même alignement que les titres */
+}
+
+/* Ajout d'un padding à gauche pour éviter que les badges ne soient collés au bord */
+@media (min-width: 768px) {
+  .social-badges-container {
+    padding-left: 1rem;
+  }
+}
+
+/* Centrer sur les petits écrans uniquement */
+@media (max-width: 640px) {
+  .social-badges-container,
+  h3.about-heading,
+  h3.network-heading {
+    justify-content: center;
+    text-align: center;
+    padding-left: 0;
+  }
+}
+
+/* Animation d'entrée pour les badges - mise à jour pour animation horizontale */
+@keyframes badgeAppear {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.social-badge {
+  animation: badgeAppear 0.5s ease forwards;
+  animation-delay: calc(var(--badge-index) * 0.1s);
+  opacity: 0;
+}
+
+/* Effet de brillance au survol */
+.social-badge::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -100%;
+  width: 60px;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: rotate(30deg);
+  transition: all 0.6s ease;
+}
+
+.social-badge:hover::after {
+  left: 200%;
 }
 
 /* Design responsive optimisé */
@@ -647,7 +684,6 @@ a.text-secondary,
 }
 
 /* Mise à jour des éléments d'interface non-boutons avec la même couleur */
-.social-badge .icon-container,
 .nav-link::before,
 .nav-link.active::before,
 .card-highlight,
@@ -775,4 +811,35 @@ footer .border-t {
 
 .service-item:hover a.bg-secondary::before {
   left: 100%;
+}
+
+/* Suppression des styles d'alignement spécifiques ajoutés précédemment */
+h3.about-heading, 
+h3.network-heading,
+h2.font-anton,
+.network-heading {
+  /* Suppression des styles d'alignement précédemment ajoutés */
+}
+
+/* Laisser les badges sociaux alignés à gauche comme demandé précédemment */
+.social-badges-container {
+  display: flex;
+  flex-direction: row; 
+  justify-content: flex-start; /* Maintien de l'alignement à gauche */
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+  z-index: 10;
+  position: relative;
+  padding: 8px 0 20px 0;
+  padding-left: 1rem;
+}
+
+/* Restauration du comportement responsive pour les badges */
+@media (max-width: 640px) {
+  .social-badges-container {
+    justify-content: center;
+    padding-left: 0;
+  }
 }
