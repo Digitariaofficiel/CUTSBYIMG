@@ -97,6 +97,11 @@
     .video-content {
       position: relative;
       z-index: 2;
+      height: 100%; /* Prend toute la hauteur du conteneur */
+      display: flex;
+      flex-direction: column;
+      justify-content: center; /* Centrage vertical */
+      align-items: center; /* Centrage horizontal */
     }
 
     .service-card {
@@ -199,32 +204,43 @@
     
     /* Animation du texte du hero - Modification du timing */
     .hero-title {
-      opacity: 0;
+      opacity: 0.8; /* Rendre IMG légèrement transparent */
       animation: fadeIn 1.2s ease-out 0.3s forwards;
-      font-size: 4rem; /* Taille de base augmentée */
+      font-size: 4.5rem; /* Taille de base augmentée */
+      text-align: center; /* Centrer le texte IMG */
+      width: 100%; /* S'assurer que le titre prend toute la largeur */
+      position: absolute; /* Position absolue pour centrage */
+      top: 50%; /* Centré verticalement */
+      left: 50%; /* Centré horizontalement */
+      transform: translate(-50%, -60%); /* Ajustement pour centrer parfaitement avec décalage vers le haut */
     }
     
     .hero-button {
-      opacity: 0;
-      animation: fadeIn 1.2s ease-out 0.8s forwards, pulse 3s infinite ease-in-out 2s;
+      opacity: 1; /* Visible immédiatement, pas de fade-in */
+      animation: none; /* Supprimer toutes les animations */
+      position: absolute; /* Position absolue pour centrage */
+      top: 65%; /* Positionnement vertical sous l'IMG */
+      left: 50%; /* Centré horizontalement */
+      transform: translateX(-50%); /* Ajustement pour centrer parfaitement */
+      text-align: center; /* Centrer le texte du bouton */
     }
     
-    /* Responsive pour le titre héro plus grand */
+    /* Mise à jour responsive pour le titre héro plus grand */
     @media (min-width: 768px) {
       .hero-title {
-        font-size: 6rem;
+        font-size: 7rem;
       }
     }
     
     @media (min-width: 1024px) {
       .hero-title {
-        font-size: 8rem;
+        font-size: 9rem;
       }
     }
     
     @media (max-width: 640px) {
       .hero-title {
-        font-size: 3.5rem;
+        font-size: 4rem;
       }
     }
     
