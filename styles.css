@@ -206,7 +206,7 @@
     .hero-title {
       opacity: 0.8; /* Rendre IMG légèrement transparent */
       animation: fadeIn 1.2s ease-out 0.3s forwards;
-      font-size: 4.5rem; /* Taille de base augmentée */
+      font-size: 5.5rem; /* Taille de base augmentée (était 4.5rem) */
       text-align: center; /* Centrer le texte IMG */
       width: 100%; /* S'assurer que le titre prend toute la largeur */
       position: absolute; /* Position absolue pour centrage */
@@ -223,24 +223,73 @@
       left: 50%; /* Centré horizontalement */
       transform: translateX(-50%); /* Ajustement pour centrer parfaitement */
       text-align: center; /* Centrer le texte du bouton */
+      transition: all 0.3s ease; /* Transition douce pour les animations */
+      overflow: hidden; /* Pour contenir l'effet de brillance */
+    }
+    
+    /* Ajout d'un effet de pulsation subtil pour attirer l'attention */
+    @keyframes gentle-pulse {
+      0% { box-shadow: 0 0 0 0 rgba(13, 71, 161, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(13, 71, 161, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(13, 71, 161, 0); }
+    }
+    
+    /* Effet de brillance au survol */
+    .hero-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+      );
+      transition: left 0.7s ease;
+      z-index: 1;
+    }
+    
+    /* Animation automatique de pulsation */
+    .hero-button {
+      animation: gentle-pulse 2s infinite;
+    }
+    
+    /* Effet au survol sans changer la position */
+    .hero-button:hover {
+      transform: translateX(-50%) scale(1.05); /* Maintient l'alignement horizontal */
+      box-shadow: 0 5px 15px rgba(13, 71, 161, 0.4);
+    }
+    
+    /* Déclencher l'effet de brillance au survol */
+    .hero-button:hover::before {
+      left: 100%;
+    }
+    
+    /* Style pour le texte du bouton pour qu'il reste au-dessus de l'effet */
+    .hero-button span {
+      position: relative;
+      z-index: 2;
     }
     
     /* Mise à jour responsive pour le titre héro plus grand */
     @media (min-width: 768px) {
       .hero-title {
-        font-size: 7rem;
+        font-size: 8.5rem; /* Augmenté de 7rem à 8.5rem */
       }
     }
     
     @media (min-width: 1024px) {
       .hero-title {
-        font-size: 9rem;
+        font-size: 11rem; /* Augmenté de 9rem à 11rem */
       }
     }
     
     @media (max-width: 640px) {
       .hero-title {
-        font-size: 4rem;
+        font-size: 5rem; /* Augmenté de 4rem à 5rem */
       }
     }
     
