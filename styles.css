@@ -277,7 +277,14 @@
     
     @media (max-width: 640px) {
       .hero-title {
-        font-size: 5rem; /* Augmenté de 4rem à 5rem */
+        font-size: 7rem; /* Augmenté de 5rem à 7rem pour mieux s'adapter à la largeur du bouton */
+      }
+    }
+
+    /* Pour les très petits écrans */
+    @media (max-width: 375px) {
+      .hero-title {
+        font-size: 6.5rem; /* Légèrement réduit pour les très petits écrans */
       }
     }
     
