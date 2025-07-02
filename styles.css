@@ -80,9 +80,32 @@
 
     @media (max-width: 768px) {
       .video-container {
-        height: 90vh;
-        min-height: 400px;
+        height: 100vh; /* Utiliser 100vh au lieu de 90vh pour remplir tout l'écran */
+        min-height: 100vh; /* Augmenter également la hauteur minimale */
         padding-top: 56px; /* Padding légèrement réduit pour mobile */
+      }
+      
+      /* Assurer que la vidéo remplit bien tout l'espace disponible sur mobile */
+      .video-container video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Assurez-vous que la vidéo couvre bien tout l'espace */
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      
+      /* S'assurer que le contenu est bien positionné */
+      .video-content {
+        padding-top: 56px; /* Ajouter un padding pour éviter que le contenu ne soit caché derrière le header */
+      }
+    }
+
+    /* Style spécifique pour les petits téléphones */
+    @media (max-width: 480px) {
+      .video-container {
+        height: 100vh;
+        padding-top: 50px; /* Padding encore plus réduit pour les petits écrans */
       }
     }
 
