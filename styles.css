@@ -75,12 +75,14 @@
       height: 100vh;
       min-height: 480px;
       overflow: hidden;
+      padding-top: 64px; /* Ajout d'un padding-top pour commencer après la barre de nav */
     }
 
     @media (max-width: 768px) {
       .video-container {
         height: 90vh;
         min-height: 400px;
+        padding-top: 56px; /* Padding légèrement réduit pour mobile */
       }
     }
 
