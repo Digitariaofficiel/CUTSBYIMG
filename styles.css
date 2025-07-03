@@ -75,37 +75,12 @@
       height: 100vh;
       min-height: 480px;
       overflow: hidden;
-      padding-top: 64px; /* Ajout d'un padding-top pour commencer après la barre de nav */
     }
 
     @media (max-width: 768px) {
       .video-container {
-        height: 100vh; /* Utiliser 100vh au lieu de 90vh pour remplir tout l'écran */
-        min-height: 100vh; /* Augmenter également la hauteur minimale */
-        padding-top: 56px; /* Padding légèrement réduit pour mobile */
-      }
-      
-      /* Assurer que la vidéo remplit bien tout l'espace disponible sur mobile */
-      .video-container video {
-        width: 100%;
-        height: 100%;
-        object-fit: cover; /* Assurez-vous que la vidéo couvre bien tout l'espace */
-        position: absolute;
-        top: 0;
-        left: 0;
-      }
-      
-      /* S'assurer que le contenu est bien positionné */
-      .video-content {
-        padding-top: 56px; /* Ajouter un padding pour éviter que le contenu ne soit caché derrière le header */
-      }
-    }
-
-    /* Style spécifique pour les petits téléphones */
-    @media (max-width: 480px) {
-      .video-container {
-        height: 100vh;
-        padding-top: 50px; /* Padding encore plus réduit pour les petits écrans */
+        height: 90vh;
+        min-height: 400px;
       }
     }
 
@@ -248,43 +223,6 @@
       left: 50%; /* Centré horizontalement */
       transform: translateX(-50%); /* Ajustement pour centrer parfaitement */
       text-align: center; /* Centrer le texte du bouton */
-      transition: all 0.3s ease; /* Transition douce pour les animations au hover */
-      overflow: hidden; /* Pour contenir l'effet de brillance */
-    }
-    
-    /* Effet de brillance au survol */
-    .hero-button::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, 0.2),
-        transparent
-      );
-      transition: left 0.7s ease;
-      z-index: 1;
-    }
-    
-    /* Effet au survol sans changer la position */
-    .hero-button:hover {
-      transform: translateX(-50%) scale(1.05); /* Maintient l'alignement horizontal */
-      box-shadow: 0 5px 15px rgba(13, 71, 161, 0.4);
-    }
-    
-    /* Déclencher l'effet de brillance au survol */
-    .hero-button:hover::before {
-      left: 100%;
-    }
-    
-    /* Style pour le texte du bouton pour qu'il reste au-dessus de l'effet */
-    .hero-button span {
-      position: relative;
-      z-index: 2;
     }
     
     /* Mise à jour responsive pour le titre héro plus grand */
@@ -302,14 +240,7 @@
     
     @media (max-width: 640px) {
       .hero-title {
-        font-size: 7rem; /* Augmenté de 5rem à 7rem pour mieux s'adapter à la largeur du bouton */
-      }
-    }
-
-    /* Pour les très petits écrans */
-    @media (max-width: 375px) {
-      .hero-title {
-        font-size: 6.5rem; /* Légèrement réduit pour les très petits écrans */
+        font-size: 5rem; /* Augmenté de 4rem à 5rem */
       }
     }
     
