@@ -189,13 +189,13 @@ function initializeReservationEvents() {
         let calUrl = "";
         
         if (hash === "moins20Barbe") {
-            calUrl = "https://cal.com/cuts.by.img/20ansbarbe";
+            calUrl = "https://cal.com/cuts.by.img/coupe-transformation";
         } else if (hash === "plus20Barbe") {
-            calUrl = "https://cal.com/cuts.by.img/plus20ansbarbe";
+            calUrl = "https://cal.com/cuts.by.img/coupe-barbe";
         } else if (hash === "moins20") {
-            calUrl = "https://cal.com/cuts.by.img/20ans";
+            calUrl = "https://cal.com/cuts.by.img/coupe-etudiant";
         } else if (hash === "plus20") {
-            calUrl = "https://cal.com/cuts.by.img/plus20ans";
+            calUrl = "https://cal.com/cuts.by.img/coupe";
         }
         
         if (calUrl) {
