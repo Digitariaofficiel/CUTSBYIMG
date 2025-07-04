@@ -15,6 +15,13 @@
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">  <script src="https://cdn.tailwindcss.com/3.4.16"></script>
   <link rel="stylesheet" href="./styles.css">
   <link rel="stylesheet" href="./stylesReservation.css">
+  <style>
+    @media (max-width: 640px) {
+      .mobile-hero-button {
+        transform: translateX(-10px); /* Décalage de 10px vers la gauche sur mobile */
+      }
+    }
+  </style>
   <script>
     tailwind.config = {
       theme: {
@@ -96,7 +103,7 @@
               <!-- Bouton positionné absolument par rapport au conteneur parent -->
               <div class="hero-button-container" style="position: absolute; bottom: -20px; left: 0; right: 0; text-align: center;">
                 <a href="#services"
-                  class="bg-secondary text-accent px-8 py-3 !rounded-button font-anton text-lg hover:bg-opacity-80 transition inline-block">RÉSERVER
+                  class="bg-secondary text-accent px-8 py-3 !rounded-button font-anton text-lg hover:bg-opacity-80 transition inline-block mobile-hero-button">RÉSERVER
                   MAINTENANT</a>
               </div>
             </div>
