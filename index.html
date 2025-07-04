@@ -42,15 +42,14 @@
     <div id="main-content">
     <!-- Logo positionné en position absolue par-dessus le header -->
     <div class="fixed z-[51] top-0 left-4 md:left-8 flex items-center h-[72px]">
-      <a href="#top" class="hover:scale-105 transition-transform duration-300 block">
-        <img src="./media/logo.png" alt="CUTSBYIMG Logo" class="h-20 md:h-28">
-      </a>
+      
     </div>
     
     <header class="fixed w-full z-50 bg-dark bg-opacity-95 shadow-sm">
       <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-        <!-- Espace vide pour compenser la suppression du logo -->
-        <div class="w-24 md:w-28"></div>
+        <!-- Revenir au texte CUTSBYIMG au lieu du logo -->
+        <a href="#top"
+          class="text-3xl font-anton text-accent hover:scale-105 transition-transform duration-300 tracking-wider uppercase">cutsbyimg</a>
         
         <!-- Navigation modifiée pour supprimer le background color -->
         <nav class="hidden md:flex space-x-8">
@@ -86,13 +85,24 @@
         <source src="./media/vidéo.mp4" type="video/mp4">
         Votre navigateur ne prend pas en charge la vidéo.
       </video>
-      <div class="video-content h-full flex items-center">
-        <div class="container mx-auto px-4 pt-24">
-          <div class="max-w-2xl px-4">
-            <h1 class="font-anton text-accent mb-8 md:mb-10 hero-title">IMG</h1>
-            <a href="#services"
-              class="bg-secondary text-accent px-8 py-3 !rounded-button font-anton text-lg hover:bg-opacity-80 transition inline-block whitespace-nowrap hero-button">RÉSERVER
-              MAINTENANT</a>
+      <div class="video-content h-full flex items-center justify-center">
+        <div class="container mx-auto px-4 flex flex-col items-center justify-center">
+          <div class="max-w-2xl px-4 flex flex-col items-center text-center" style="position: relative;">
+            <!-- Conteneur pour le logo et le bouton avec position relative -->
+            <div class="w-full" style="position: relative;">
+              <!-- Logo sans marges -->
+              <img src="./media/logo.png" alt="CUTSBYIMG Logo" class="w-full max-w-md mx-auto" style="margin-bottom: 0; padding-bottom: 0;" />
+              
+              <!-- Bouton positionné absolument par rapport au conteneur parent -->
+              <div style="position: absolute; bottom: -20px; left: 0; right: 0; text-align: center; transform: translateX(-18px);">
+                <a href="#services"
+                  class="bg-secondary text-accent px-8 py-3 !rounded-button font-anton text-lg hover:bg-opacity-80 transition inline-block">RÉSERVER
+                  MAINTENANT</a>
+              </div>
+            </div>
+            
+            <!-- Espace invisible pour compenser le positionnement absolu du bouton -->
+            <div style="height: 40px;"></div>
           </div>
         </div>
       </div>
