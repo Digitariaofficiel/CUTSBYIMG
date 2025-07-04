@@ -859,3 +859,16 @@ h2.font-anton,
     padding-left: 0;
   }
 }
+
+/* Styles spécifiques pour le bouton héro sur desktop vs mobile */
+@media (min-width: 768px) {
+  .hero-button-container {
+    transform: translateX(-18px); /* Appliquer le décalage seulement sur desktop */
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-button-container {
+    transform: translateX(0); /* Pas de décalage sur mobile */
+  }
+}
